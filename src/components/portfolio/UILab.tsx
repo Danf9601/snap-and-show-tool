@@ -65,7 +65,7 @@ function DashboardDemo() {
   }, [tick, range]);
 
   const path = points
-    .map((p, i) => `${i === 0 ? "M" : "L"} ${(i / 23) * 100} ${(1 - p) * 100}`)
+    .map((p, i) => `${i === 0 ? "M" : "L"} ${((i / 23) * 100).toFixed(2)} ${((1 - p) * 100).toFixed(2)}`)
     .join(" ");
 
   return (
