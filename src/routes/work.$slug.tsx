@@ -140,7 +140,15 @@ function CaseStudy() {
         </Section>
 
         {project.features?.length ? (
-          <Section name="FEATURES" index={next()} title="Qué hace el producto">
+          <Section
+            name="FEATURES"
+            index={next()}
+            title={
+              project.tags.some((t) => t === "Web Design" || t === "Art Direction")
+                ? "Qué incluye el sitio"
+                : "Qué hace el producto"
+            }
+          >
             <div className="grid gap-4 md:grid-cols-2">
               {project.features.map((f) => (
                 <div
