@@ -176,15 +176,95 @@ export const PROJECTS: Project[] = [
   },
 
   {
+    slug: "claude-figma",
+    title: "Claude × Figma API Integration",
+    year: "2026",
+    role: "AI Workflow Design · Prompt Engineering · Design Systems",
+    summary:
+      "Integración directa entre Claude y la API REST de Figma para automatizar generación de componentes, layouts dinámicos y flujos lógicos por prompt engineering — aplicada al rediseño de Launch Mobility.",
+    tags: ["AI Automation", "Prompt Engineering", "Design Systems"],
+    status: "SHIPPED",
+    cover: "claude-figma",
+    stats: [
+      { value: "85%", label: "Reducción de trabajo manual" },
+      { value: "2.5×", label: "Velocidad de iteración" },
+      { value: "98%", label: "Cumplimiento del design system" },
+      { value: "500+", label: "Vehículos visualizados" },
+    ],
+    features: [
+      {
+        title: "Input Layer — Intención del usuario",
+        description:
+          "El diseñador escribe un prompt en lenguaje natural describiendo requerimientos exactos — layouts, densidad de datos, flujos de usuario.",
+      },
+      {
+        title: "Intelligence Layer — Procesamiento con Claude",
+        description:
+          "Claude traduce la intención a la estructura lógica de Figma — reglas de auto-layout, spacing exacto y jerarquía visual.",
+      },
+      {
+        title: "Integration Layer — Puente con la API REST de Figma",
+        description:
+          "El JSON generado se conecta vía tokens de autenticación a los endpoints de Figma y se traduce en elementos reales sobre el canvas.",
+      },
+      {
+        title: "Compliance Layer — Inyección del design system",
+        description:
+          "La IA aplica la librería de componentes oficial de Launch Mobility en cada paso — estilos de botón, paleta, iconografía y spacing, con cero error humano.",
+      },
+    ],
+    findings: [
+      '"Generate a bento grid showing battery status for 500 fleet vehicles with real-time status indicators" — ~6 min.',
+      '"Create a booking flow with pickup, destination, and date fields using LM DS components" — ~4 min.',
+      '"Design a fleet admin dashboard with live map, KPI strip, and sidebar for active trips" — ~9 min.',
+    ],
+    tools: [
+      { name: "Claude", note: "Prompt engineering y generación" },
+      { name: "Figma REST API", note: "Escritura de nodos en canvas" },
+    ],
+  },
+  {
     slug: "ontop",
     title: "Ontop — Perks Landing Page",
     year: "2023",
     role: "UI Design · Landing",
     summary:
-      "Landing para una plataforma de beneficios corporativos con partners como Rappi, Netflix, Spotify y Cabify: planes Standard y Premium, tarjeta Ontop, renovación de beneficios y redención inmediata.",
+      "Landing para una plataforma de beneficios corporativos — acceso centralizado a partners, tarjeta propia y renovación automática para que el usuario no pierda beneficios.",
     tags: ["Landing Page", "Benefits", "UI Design"],
     status: "SHIPPED",
     cover: "ontop",
+    features: [
+      {
+        title: "Beneficios al mejor precio",
+        description:
+          "Acceso centralizado a partners como Rappi, Netflix, Spotify, Cabify y Foodology.",
+      },
+      {
+        title: "Cobertura sin importar dónde estés",
+        description: "Los beneficios viajan con el usuario.",
+      },
+      {
+        title: "Renovación automática",
+        description: "Un programa que evita perder el acceso y da tranquilidad.",
+      },
+      {
+        title: "Tarjeta Ontop",
+        description: "Pensada para aumentar el revenue del usuario y centralizar el consumo.",
+      },
+      {
+        title: "Redención inmediata",
+        description: "El beneficio se activa al instante, sin fricción.",
+      },
+      {
+        title: "Soporte eficiente",
+        description: "Equipo de soporte disponible cuando el usuario lo necesita.",
+      },
+    ],
+    tools: [
+      { name: "Photoshop" },
+      { name: "Illustrator" },
+      { name: "Figma" },
+    ],
   },
   {
     slug: "commdesk",
@@ -192,10 +272,39 @@ export const PROJECTS: Project[] = [
     year: "2023",
     role: "UI Design · Landing",
     summary:
-      "Landing de conversión B2B para una plataforma de comunicación con clientes (EngageCloud): mensajería in-product, mobile y email en un solo relato de scroll, con una acción dominante por sección.",
+      "Landing de conversión B2B para EngageCloud — mensajería in-product, mobile y email en un solo relato de scroll, con una acción dominante por sección.",
     tags: ["Landing Page", "SaaS", "UI Design"],
     status: "SHIPPED",
     cover: "commdesk",
+    features: [
+      {
+        title: "Mensajería in-product",
+        description:
+          "Chats, posts, chatbots, encuestas in-app y product tours en un solo panel.",
+      },
+      {
+        title: "Comunicación mobile",
+        description: "Push notifications y carruseles nativos para la app.",
+      },
+      {
+        title: "Email en el mismo flujo",
+        description: "Comunicación transaccional y de marketing sin salir del producto.",
+      },
+      {
+        title: "Convierte más clientes",
+        description: "Herramientas de conversión pensadas para equipos de ventas.",
+      },
+      {
+        title: "Soporte a escala",
+        description: "Atención al cliente 24/7 sin perder personalización.",
+      },
+      {
+        title: "Confianza probada",
+        description:
+          "Usado por más de 15,000 negocios (Shopify, Slack, Google, Amazon, entre otros).",
+      },
+    ],
+    tools: [{ name: "Creative Cloud" }, { name: "Figma" }],
   },
   {
     slug: "angelemus",
@@ -207,6 +316,37 @@ export const PROJECTS: Project[] = [
     tags: ["Web Design", "Art Direction", "Branding"],
     status: "SHIPPED",
     cover: "angelemus",
+    features: [
+      {
+        title: "Navegación por scroll horizontal",
+        description:
+          "El recorrido de la galería se siente como caminar por una sala de exhibición.",
+      },
+      {
+        title: "Ficha detallada por obra",
+        description:
+          "Descripción, técnica y contacto directo por pieza, con estados hover.",
+      },
+      {
+        title: "Tipografía Nunito Sans",
+        description:
+          "Elegida por su geometría limpia, coherente con el lenguaje visual de una galería.",
+      },
+      {
+        title: "Sección de orígenes",
+        description: "Historia de la artista y su proceso creativo.",
+      },
+      {
+        title: "Contacto directo",
+        description: "Formulario y WhatsApp para consultas sobre las obras.",
+      },
+    ],
+    tools: [
+      { name: "XD" },
+      { name: "Illustrator" },
+      { name: "Photoshop" },
+      { name: "Figma" },
+    ],
   },
 ];
 
