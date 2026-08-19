@@ -316,6 +316,8 @@ export function ProjectCover({ cover, title }: { cover: string; title: string })
       return <Ontop />;
     case "commdesk":
       return <Commdesk />;
+    case "claude-figma":
+      return <ClaudeFigma />;
     default:
       return <Angelemus />;
   }
