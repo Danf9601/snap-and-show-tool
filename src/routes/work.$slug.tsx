@@ -139,6 +139,48 @@ function CaseStudy() {
           </p>
         </Section>
 
+        {project.features?.length ? (
+          <Section name="FEATURES" index={next()} title="Qué hace el producto">
+            <div className="grid gap-4 md:grid-cols-2">
+              {project.features.map((f) => (
+                <div
+                  key={f.title}
+                  className="border-glass-stroke bg-glass flex gap-4 rounded-lg border p-5"
+                  style={{ backdropFilter: "blur(24px)" }}
+                >
+                  <span className="bg-accent/10 text-text-accent flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2.5 7.5L5.5 10.5L11.5 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <div className="text-text-primary text-sm font-medium leading-snug">
+                      {f.title}
+                    </div>
+                    <p className="text-text-secondary mt-1 text-sm leading-relaxed">
+                      {f.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Section>
+        ) : null}
+
+
         {project.stats?.length ? (
           <Section name="IMPACT" index={next()} title="Números">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
