@@ -51,7 +51,7 @@ function DashboardDemo() {
     if (reduce) return;
     const id = window.setInterval(() => {
       setTick((t) => t + 1);
-      setLogs((l) => [...l.slice(-5), LOG_LINES[Math.floor(Math.random() * LOG_LINES.length)]]);
+      setLogs((l) => [...l.slice(-5), LOG_LINES[Math.floor(Math.random() * LOG_LINES.length)] ?? LOG_LINES[0]!]);
     }, 1600);
     return () => window.clearInterval(id);
   }, []);
@@ -79,9 +79,9 @@ function DashboardDemo() {
 
       <div className="mt-4 grid grid-cols-3 gap-2">
         {[
-          { k: "Throughput", v: `${(1.1 + points[12] * 0.6).toFixed(2)}k/s` },
-          { k: "Latency p95", v: `${Math.round(120 + points[6] * 90)}ms` },
-          { k: "Cost / 1k", v: `$${(0.4 + points[18] * 0.2).toFixed(3)}` },
+          { k: "Throughput", v: `${(1.1 + (points[12] ?? 0) * 0.6).toFixed(2)}k/s` },
+          { k: "Latency p95", v: `${Math.round(120 + (points[6] ?? 0) * 90)}ms` },
+          { k: "Cost / 1k", v: `$${(0.4 + (points[18] ?? 0) * 0.2).toFixed(3)}` },
         ].map((m) => (
           <div key={m.k} className="bg-raised rounded-sm p-3">
             <div className="label-xs text-[10px]">{m.k}</div>
