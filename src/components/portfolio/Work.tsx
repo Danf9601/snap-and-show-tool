@@ -130,9 +130,9 @@ function Card({ project }: { project: Project }) {
       data-cursor="view"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`card-surface glow-hover group overflow-hidden ${
-        big ? "md:col-span-3" : "md:col-span-2"
-      } ${hover ? "md:-translate-y-1" : ""}`}
+      className={`card-surface glow-hover group h-full overflow-hidden ${
+        hover ? "md:-translate-y-1" : ""
+      }`}
     >
       <div className={`relative overflow-hidden ${big ? "aspect-[16/10]" : "aspect-[16/11]"}`}>
         <img
@@ -195,10 +195,12 @@ export function Work() {
 
         <div className="grid gap-5 md:grid-cols-6">
           {PROJECTS.map((p, i) => (
-            <Reveal key={p.id} delay={(i % 3) * 80} className={p.flagship ? "md:col-span-3" : "md:col-span-2"}>
-              <div className="h-full [&>article]:h-full [&>article]:md:col-span-6">
-                <Card project={p} />
-              </div>
+            <Reveal
+              key={p.id}
+              delay={(i % 3) * 80}
+              className={p.flagship ? "md:col-span-3" : "md:col-span-2"}
+            >
+              <Card project={p} />
             </Reveal>
           ))}
         </div>
