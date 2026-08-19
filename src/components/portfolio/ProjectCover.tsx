@@ -253,8 +253,8 @@ function ClaudeFigma() {
           <line key={`h${i}`} x1="0" y1={i * 28 + 8} x2="400" y2={i * 28 + 8} stroke={SUBTLE} />
         ))}
         {edges.map(([a, b], i) => {
-          const p = nodes[a];
-          const q = nodes[b];
+          const p = nodes[a]!;
+          const q = nodes[b]!;
           return (
             <path
               key={i}
