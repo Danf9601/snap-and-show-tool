@@ -228,6 +228,63 @@ function Angelemus() {
   );
 }
 
+function ClaudeFigma() {
+  const nodes = [
+    { x: 46, y: 125 },
+    { x: 150, y: 68 },
+    { x: 150, y: 182 },
+    { x: 254, y: 125 },
+    { x: 354, y: 72 },
+    { x: 354, y: 178 },
+  ];
+  const edges: [number, number][] = [
+    [0, 1],
+    [0, 2],
+    [1, 3],
+    [2, 3],
+    [3, 4],
+    [3, 5],
+  ];
+  return (
+    <Frame>
+      <Glow x="60%" y="45%" opacity={0.22} />
+      <svg viewBox="0 0 400 250" className="absolute inset-0 size-full" aria-hidden>
+        {range(9).map((i) => (
+          <line key={`h${i}`} x1="0" y1={i * 28 + 8} x2="400" y2={i * 28 + 8} stroke={SUBTLE} />
+        ))}
+        {edges.map(([a, b], i) => {
+          const p = nodes[a]!;
+          const q = nodes[b]!;
+          return (
+            <path
+              key={i}
+              d={`M ${p.x} ${p.y} H ${(p.x + q.x) / 2} V ${q.y} H ${q.x}`}
+              fill="none"
+              stroke={ACCENT}
+              strokeOpacity="0.55"
+              strokeWidth="1.25"
+            />
+          );
+        })}
+        {nodes.map((n, i) => (
+          <g key={`n${i}`}>
+            <rect
+              x={n.x - 18}
+              y={n.y - 12}
+              width="36"
+              height="24"
+              rx="7"
+              fill="var(--glass-fill)"
+              stroke={i === 0 || i === 3 ? ACCENT : LINE}
+            />
+            <circle cx={n.x} cy={n.y} r="2.5" fill={ACCENT} />
+          </g>
+        ))}
+      </svg>
+    </Frame>
+  );
+}
+
 function Photo({ src, alt }: { src: string; alt: string }) {
   return (
     <img
@@ -259,6 +316,8 @@ export function ProjectCover({ cover, title }: { cover: string; title: string })
       return <Ontop />;
     case "commdesk":
       return <Commdesk />;
+    case "claude-figma":
+      return <ClaudeFigma />;
     default:
       return <Angelemus />;
   }
