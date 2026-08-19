@@ -11,6 +11,7 @@ export type Project = {
   cover: string;
   flagship?: boolean;
   image?: string;
+  features?: { title: string; description: string }[];
   stats?: { value: string; label: string }[];
   process?: string[];
   tools?: { name: string; note?: string }[];
@@ -18,6 +19,7 @@ export type Project = {
   painPoints?: { label: string; value: number }[];
   wayOfWork?: string[];
 };
+
 
 export const PROJECTS: Project[] = [
   {
@@ -133,11 +135,46 @@ export const PROJECTS: Project[] = [
     year: "2023",
     role: "Product Design · Interaction Design",
     summary:
-      "App que convierte el celular en punto de venta: pago en cuotas, cobro de ventas de MercadoLibre desde el local, cobro por email y control de ventas desde el celular, con seguridad para vendedor y cliente. Sin costos de contratación ni mantenimiento.",
+      "App que convierte el celular en punto de venta — pensada para negocios que hoy cobran en efectivo y quieren pasar a digital sin fricción ni costos fijos.",
     tags: ["Fintech", "POS", "Mobile App"],
     status: "SHIPPED",
     cover: "pos",
+    features: [
+      {
+        title: "Pago en cuotas",
+        description: "Hasta 12 cuotas con Visa, Mastercard, Diners Club, Hipercard y Elo.",
+      },
+      {
+        title: "Sin costos de contratación ni mantenimiento",
+        description: "El negocio no paga por usar el lector ni por mantenerlo activo.",
+      },
+      {
+        title: "Comprobante de pago por email",
+        description: "El cliente firma en pantalla y recibe el recibo directo en su correo.",
+      },
+      {
+        title: "Control de ventas desde el celular",
+        description: "Resumen de cobros día a día, sin esperar a fin de mes, con devoluciones en un solo paso.",
+      },
+      {
+        title: "Seguridad para vendedor y cliente",
+        description: "Cumple los estándares de seguridad del mercado y elimina el riesgo de trasladar efectivo.",
+      },
+    ],
+    process: [
+      "Abrir la app y conectar el lector",
+      "Ingresar el monto a cobrar",
+      "Elegir método de pago — tarjeta o QR",
+      "Procesar el cobro",
+      "Confirmación — éxito, error o esperando respuesta",
+      "Enviar recibo digital por email",
+    ],
+    tools: [
+      { name: "Figma", note: "Prototipado y diseño" },
+      { name: "Creative Cloud", note: "Ilustración y assets" },
+    ],
   },
+
   {
     slug: "ontop",
     title: "Ontop — Perks Landing Page",
