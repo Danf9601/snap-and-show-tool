@@ -353,3 +353,5 @@ export const PROJECTS: Project[] = [
 export function getProject(slug: string) {
   return PROJECTS.find((p) => p.slug === slug);
 }
+
+export const PROJECT_PATHS = PROJECTS.map((project) => `/work/${project.slug}`);
