@@ -4,6 +4,7 @@ import { ProjectCover } from "@/components/portfolio/ProjectCover";
 import { TopBar } from "@/components/portfolio/TopBar";
 import { CustomCursor } from "@/components/portfolio/CustomCursor";
 import { Reveal, StatusBadge } from "@/components/portfolio/primitives";
+import { ClientBadge } from "@/components/portfolio/ClientBadge";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -117,6 +118,11 @@ function CaseStudy() {
               <h1 className="text-4xl leading-[1.05] md:text-6xl">{project.title}</h1>
               <span className="mono text-text-tertiary text-sm">{project.year}</span>
             </div>
+            {project.clientLogo && (
+              <div className="mt-4">
+                <ClientBadge src={project.clientLogo} alt={`Logo de ${project.title}`} />
+              </div>
+            )}
             <p className="mono text-text-secondary mt-4 text-xs tracking-widest uppercase">
               {project.role}
             </p>

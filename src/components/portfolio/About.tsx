@@ -14,17 +14,16 @@ const STACK = [
 ];
 
 const TIMELINE = [
-  { years: "2022 — hoy", role: "Senior Frontend Engineer & UX/UI Designer", where: "Producto propio + consultoría (Kinetik Studio, Serenia)" },
-  { years: "2019 — 2022", role: "Product Designer / Frontend Lead", where: "Fintech y logística LATAM (Mercado Pago POS, Tul, Ontop)" },
-  { years: "2014 — 2019", role: "UX/UI Designer", where: "Agencias y equipos de producto en Bogotá" },
-  { years: "2010 — 2014", role: "Diseñador digital & ilustrador", where: "Dirección de arte y trabajo editorial" },
+  { years: "2023 — hoy", role: "Senior UX/UI Designer & Front End Developer", where: "Producto propio + consultoría (Kinetik Studio, Serenia)" },
+  { years: "2021 — 2023", role: "Product Designer / Frontend Lead", where: "Fintech y beneficios corporativos LATAM (Mercado Pago POS, Ontop, Commdesk)" },
+  { years: "2018 — 2021", role: "UX/UI Designer", where: "Tul, agencias y equipos de producto en Bogotá" },
 ];
 
 export function About() {
   return (
     <section id="about" className="px-5 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-[1400px]">
-        <SectionHeader name="ABOUT" index="005" title="Quince años cerrando la brecha entre diseño y código." />
+        <SectionHeader name="ABOUT" index="005" title="Ocho años cerrando la brecha entre diseño y código." />
 
         <div className="grid gap-14 md:grid-cols-[1.1fr_1fr] md:gap-20">
           <Reveal>

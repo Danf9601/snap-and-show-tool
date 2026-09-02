@@ -9,9 +9,9 @@ import { Expertise } from "@/components/portfolio/Expertise";
 import { About } from "@/components/portfolio/About";
 import { Contact } from "@/components/portfolio/Contact";
 
-const TITLE = "Daniel Forero — Senior Frontend Engineer & UX/UI Designer";
+const TITLE = "Daniel Forero — Senior UX/UI Designer & Front End Developer";
 const DESCRIPTION =
-  "Portafolio de Daniel Forero, Bogotá: 15+ años diseñando y construyendo productos digitales, del design system al código en producción.";
+  "Portafolio de Daniel Forero, Bogotá: 8+ años diseñando y construyendo productos digitales, del design system al código en producción.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,7 +48,7 @@ function Index() {
             "@context": "https://schema.org",
             "@type": "Person",
             name: "Daniel Forero",
-            jobTitle: "Senior Frontend Engineer & UX/UI Designer",
+            jobTitle: "Senior UX/UI Designer & Front End Developer",
             address: { "@type": "PostalAddress", addressLocality: "Bogotá", addressCountry: "CO" },
             sameAs: [
               "https://www.behance.net/danielforero11",

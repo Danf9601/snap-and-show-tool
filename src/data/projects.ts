@@ -11,6 +11,7 @@ export type Project = {
   cover: string;
   flagship?: boolean;
   image?: string;
+  clientLogo?: string;
   features?: { title: string; description: string }[];
   stats?: { value: string; label: string }[];
   process?: string[];
@@ -81,6 +82,10 @@ export const PROJECTS: Project[] = [
       "El tracking en tiempo real alcanzó 91% de adopción en el primer mes.",
       "Design system propio: tokens de color, botones, iconografía, inputs y type scale.",
     ],
+    tools: [
+      { name: "Figma", note: "Diseño y prototipado" },
+      { name: "Photoshop", note: "Retoque y assets visuales" },
+    ],
   },
   {
     slug: "tul",
@@ -92,10 +97,40 @@ export const PROJECTS: Project[] = [
     tags: ["E-commerce", "Design System", "Webflow"],
     status: "SHIPPED",
     cover: "tul",
+    clientLogo: "tul",
     stats: [
       { value: "78%", label: "Clientes pagando digitalmente" },
       { value: "+14%", label: "Incremento en ventas por el cambio a digital" },
       { value: "2 meses", label: "Duración del reto" },
+    ],
+    features: [
+      {
+        title: "Checkout y pasarelas de pago",
+        description: "Diseño end-to-end del checkout y la integración de las pasarelas de pago de la WebApp completa.",
+      },
+      {
+        title: "Design system propio",
+        description: "Construido en sinergia con desarrollo: cada sprint, un miembro del equipo documentaba y presentaba un componente nuevo al grupo.",
+      },
+      {
+        title: "Producción de landing pages en Webflow",
+        description: "Mantenimiento diario del CMS, traduciendo requerimientos de todas las áreas del negocio en diseño y montaje directo en la plataforma.",
+      },
+      {
+        title: "Automatizaciones e integraciones",
+        description: "Integración de apps externas para requerimientos especiales y automatización de la recolección de contenido dentro del CMS.",
+      },
+      {
+        title: "Centro de ayuda in-app",
+        description: "Chat y llamada directa para resolver problemas de pedidos y datos de facturación, más una sección de tutoriales para nuevos usuarios.",
+      },
+    ],
+    process: [
+      "Discovery de requerimientos con todas las áreas del negocio",
+      "Diseño del checkout y las pasarelas de pago",
+      "Creación colaborativa del design system (1–2 días por sprint)",
+      "Producción y mantenimiento diario de landings en Webflow",
+      "Refinamiento con el equipo de desarrollo y demo de resultados",
     ],
     tools: [
       { name: "Figma", note: "Prototipado y diseño" },
@@ -121,12 +156,51 @@ export const PROJECTS: Project[] = [
     tags: ["AI Product", "Mobile App", "UX Research"],
     status: "IN PROGRESS",
     cover: "snappr",
+    clientLogo: "snappr",
+    features: [
+      {
+        title: "Login & Registration",
+        description: "Acceso simple con dos caminos claros: iniciar sesión o convertirse en Snappr Partner.",
+      },
+      {
+        title: "Snappr AI — feature central",
+        description: "El corazón del producto: transforma fotos tomadas con el celular en fotografía de catálogo lista para publicar.",
+      },
+      {
+        title: "Carga de fotos con recomendaciones",
+        description: "Hasta 5 fotos por sesión, subida automática desde el carrete, con guía para evitar distorsión y variar ángulos.",
+      },
+      {
+        title: "Selección de fondo por categoría",
+        description: "Fondos de estilo pensados por tipo de producto — hogar, belleza y más — para que el resultado se vea como un shooting profesional.",
+      },
+      {
+        title: "Exportación configurable",
+        description: "El usuario elige márgenes de exportación y a dónde enviar las fotos finales.",
+      },
+      {
+        title: "Remove BG",
+        description: "Remoción de fondo dedicada para catálogos que necesitan producto aislado, sin escenografía.",
+      },
+    ],
     process: [
-      "Research de la industria",
-      "Detección de features (foto, edición, subida, página de producto, compartir)",
-      "Entender a los usuarios: personas + research",
-      "Diseño de la experiencia: user flow",
-      "Creación de la UI: login, home, carga de fotos, recomendaciones, selección de fondo e importación",
+      "Research de la industria: mapeo de apps de fotografía con IA, sus trials limitados y sus fricciones en mobile",
+      "Detección de 8 features clave del producto (login, onboarding, home, Snappr AI, carga, mejora, exportación, remoción de fondo)",
+      "3 personas de usuario con research de personalidad y de conocimiento tecnológico",
+      "Diseño del user flow sobre la persona de Fernando Forero, con puntos de fricción y métricas de permanencia, hotclicks y conversión",
+      "Estimación de esfuerzo de desarrollo y recursos por feature",
+      "UI final: login, home, carga con recomendaciones, selección de fondo por categoría, exportación configurable",
+    ],
+    findings: [
+      "Germán Medina (marca de ropa): puede evitar el costo de un fotógrafo profesional tomando fotos con el celular y dejando la edición a la IA.",
+      "Ana Cuestas (marketing e-commerce B2B): hoy depende del equipo de diseño para quitar fondos, lo que genera cuellos de botella en la publicación de contenido.",
+      "Fernando Forero (tienda de muebles): necesita digitalizar su inventario para vender por redes y Mercado Libre sin presupuesto para fotografía profesional.",
+    ],
+    tools: [
+      { name: "Creative Cloud", note: "Retoque y assets" },
+      { name: "Photoshop", note: "Edición de producto" },
+      { name: "Figma", note: "Prototipado y diseño de UI" },
+      { name: "HTML/CSS", note: "Prototipo funcional" },
     ],
   },
   {
@@ -139,6 +213,7 @@ export const PROJECTS: Project[] = [
     tags: ["Fintech", "POS", "Mobile App"],
     status: "SHIPPED",
     cover: "pos",
+    clientLogo: "mercado-pago",
     features: [
       {
         title: "Pago en cuotas",
@@ -233,6 +308,7 @@ export const PROJECTS: Project[] = [
     tags: ["Landing Page", "Benefits", "UI Design"],
     status: "SHIPPED",
     cover: "ontop",
+    clientLogo: "ontop",
     features: [
       {
         title: "Beneficios al mejor precio",
@@ -353,5 +429,3 @@ export const PROJECTS: Project[] = [
 export function getProject(slug: string) {
   return PROJECTS.find((p) => p.slug === slug);
 }
-
-export const PROJECT_PATHS = PROJECTS.map((project) => `/work/${project.slug}`);

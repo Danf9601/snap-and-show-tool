@@ -5,7 +5,19 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import { PROJECT_PATHS } from "./src/data/projects.ts";
+
+const PROJECT_PATHS = [
+  "/work/kinetik",
+  "/work/serenia",
+  "/work/launch-mobility",
+  "/work/tul",
+  "/work/snappr-ai",
+  "/work/mercado-pago",
+  "/work/claude-figma",
+  "/work/ontop",
+  "/work/commdesk",
+  "/work/angelemus",
+];
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const base = isGitHubPages ? "/snap-and-show-tool/" : "/";

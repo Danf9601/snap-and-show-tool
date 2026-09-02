@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Daniel Forero — Senior Frontend Engineer & UX/UI Designer" },
+      { title: "Daniel Forero — Senior UX/UI Designer & Front End Developer" },
       {
         name: "description",
         content:

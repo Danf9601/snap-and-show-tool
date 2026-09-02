@@ -40,13 +40,13 @@ export function Hero() {
               <div>
                 <dt className="label-xs">Role</dt>
                 <dd className="text-text-primary mt-2 leading-relaxed">
-                  Senior Frontend Engineer
-                  <br />& Senior UX/UI Designer
+                  Senior UX/UI Designer
+                  <br />& Front End Developer
                 </dd>
               </div>
               <div>
                 <dt className="label-xs">Experience</dt>
-                <dd className="text-text-primary mt-2">15+ years</dd>
+                <dd className="text-text-primary mt-2">8+ years</dd>
               </div>
               <div>
                 <dt className="label-xs">Based in</dt>
