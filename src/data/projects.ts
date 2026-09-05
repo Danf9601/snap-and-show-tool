@@ -39,13 +39,77 @@ export const PROJECTS: Project[] = [
     slug: "serenia",
     title: "Serenia",
     year: "2025",
-    role: "Mobile Product · Design System · Flutter",
+    role: "Founder · Full-Stack Product · Flutter + Supabase",
     summary:
       "App de meditación guiada en Flutter + Supabase. Sistema propio de color y movimiento, siete personajes ilustrados y una sesión de audio que se siente sin fricción desde el primer tap.",
     tags: ["Mobile Product", "Design System", "Flutter"],
     status: "SHIPPED",
     cover: "serenia",
     flagship: true,
+    features: [
+      {
+        title: "Sistema de diseño propio de punta a punta",
+        description:
+          '"V2 Blueberry + Cream Soda": tokens de color, tipografía y componentes definidos en Figma y llevados 1:1 a Flutter (AppColors/AppTextStyles), con 7 personajes originales generados con Recraft y 88 ilustraciones catalogadas.',
+      },
+      {
+        title: "Coach de bienestar con IA real",
+        description:
+          "Chat conversacional servido desde una Edge Function que invoca la API de Claude server-side — nunca desde el cliente —, con historial persistente por usuario en Supabase.",
+      },
+      {
+        title: "Catálogo de contenido con fallback resiliente",
+        description:
+          "Meditaciones, programas guiados multi-día, sonidos ambiente y pistas ASMR viven en Supabase; cada pantalla intenta traerlos primero y cae a un catálogo local si la tabla está vacía o el audio remoto no es válido, para que la app nunca se sienta rota.",
+      },
+      {
+        title: "Gamificación con lógica server-side",
+        description:
+          "Rachas, minutos acumulados y logros se calculan y desbloquean automáticamente vía Edge Function — nunca confiando en datos que manda el cliente.",
+      },
+      {
+        title: "Suscripciones desacopladas del proveedor",
+        description:
+          'Serenia Plus vía RevenueCat, con un webhook propio y una columna "provider" genérica en el esquema para poder cambiar de proveedor de pagos sin migrar base de datos.',
+      },
+      {
+        title: "Auditoría de seguridad pre-lanzamiento",
+        description:
+          "20 puntos verificados contra el código real, incluyendo una vulnerabilidad IDOR encontrada y corregida antes de producción: la función que calculaba rachas confiaba en un user_id enviado por el cliente sin verificar.",
+      },
+    ],
+    stats: [
+      { value: "16", label: "Features Flutter" },
+      { value: "11", label: "Migraciones SQL sin drift" },
+      { value: "16/16", label: "Tablas con RLS" },
+      { value: "7", label: "Personajes originales" },
+    ],
+    process: [
+      "Sistema de diseño completo en Figma antes de tocar código: tokens, 7 personajes, 88 ilustraciones",
+      "Arquitectura Flutter por features (16 módulos) con Riverpod + go_router",
+      "Modelado de datos en Supabase: RLS desde la primera migración, no como parche posterior",
+      "Integración de IA real (Claude) para el Coach, servida siempre desde Edge Function",
+      "Auditoría de seguridad propia de 20 puntos antes de lanzamiento, con hallazgo y fix de una vulnerabilidad IDOR real",
+      "Orquestación de dos agentes de IA en paralelo (frontend/backend) sobre el mismo repo, con un documento técnico vivo como fuente de verdad compartida",
+    ],
+    findings: [
+      'El player tenía un selector de "sonido de fondo" puramente decorativo, sin conectar a audio real — el fix fue conectarlo al catálogo de `sounds` que ya existía en Supabase, con un segundo AudioPlayer en loop a bajo volumen.',
+      "El fix de seguridad más importante de la auditoría: `update-streak` derivaba el `user_id` del body de la request sin verificar — cualquiera podía escribir la racha de otro usuario. Se corrigió derivándolo exclusivamente del JWT verificado server-side.",
+      "Mantener un documento técnico único y actualizado (no la memoria de cada sesión de IA) fue lo que permitió que dos agentes trabajando en paralelo sobre el mismo repo no se pisaran ni duplicaran trabajo.",
+    ],
+    tools: [
+      { name: "Flutter", note: "App móvil iOS/Android" },
+      { name: "Supabase", note: "Postgres, Auth, Edge Functions" },
+      { name: "Figma", note: "Sistema de diseño V2" },
+      { name: "Recraft", note: "Generación de personajes" },
+      { name: "Claude (Anthropic API)", note: "Coach de IA" },
+      { name: "RevenueCat", note: "Suscripciones" },
+    ],
+    wayOfWork: [
+      "Founder/builder solo: producto, diseño y desarrollo completo sin equipo.",
+      "Dos agentes de IA trabajando en paralelo sobre el mismo repo — uno en frontend/Flutter, otro en backend/Supabase/seguridad — coordinados por un documento técnico vivo, no por memoria de conversación.",
+      "Figma como fuente de verdad del diseño; ninguna pantalla se construye sin su referencia visual.",
+    ],
   },
   {
     slug: "launch-mobility",

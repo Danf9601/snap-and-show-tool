@@ -59,8 +59,10 @@
   --color-destructive: var(--danger);
   --color-destructive-foreground: var(--text-primary);
 
-  --color-serenia-violet: #8b5cf6;
-  --color-serenia-emerald: #34d399;
+  /* V2 "Blueberry + Cream Soda" — de lib/core/theme/app_colors.dart del
+     producto real. Reemplaza la paleta V1 (violeta/esmeralda) retirada. */
+  --color-serenia-blueberry: #6082ff;
+  --color-serenia-creamsoda: #ffd15c;
 }
 
 :root {

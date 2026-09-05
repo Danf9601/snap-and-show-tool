@@ -1,5 +1,4 @@
 import kinetikImg from "@/assets/kinetik.jpg";
-import sereniaImg from "@/assets/serenia.jpg";
 
 /**
  * Generative case-study covers. No third-party imagery: every cover is drawn
@@ -285,6 +284,36 @@ function ClaudeFigma() {
   );
 }
 
+const SERENIA_BLUEBERRY = "var(--color-serenia-blueberry)";
+const SERENIA_CREAMSODA = "var(--color-serenia-creamsoda)";
+
+function Serenia() {
+  return (
+    <Frame>
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(70% 70% at 50% 45%, color-mix(in oklab, ${SERENIA_BLUEBERRY} 28%, transparent), transparent 72%)`,
+        }}
+      />
+      <svg viewBox="0 0 400 250" className="absolute inset-0 size-full" aria-hidden>
+        {/* Orbe del reproductor real (player_screen.dart): gradiente radial + anillo. */}
+        <defs>
+          <radialGradient id="serenia-orb" cx="38%" cy="34%" r="70%">
+            <stop offset="0%" stopColor={SERENIA_CREAMSODA} stopOpacity="0.9" />
+            <stop offset="45%" stopColor={SERENIA_BLUEBERRY} />
+            <stop offset="100%" stopColor="var(--bg-base)" />
+          </radialGradient>
+        </defs>
+        <circle cx="200" cy="125" r="72" fill="url(#serenia-orb)" />
+        <circle cx="200" cy="125" r="72" fill="none" stroke={LINE} strokeWidth="1" />
+        <circle cx="200" cy="125" r="96" fill="none" stroke={SUBTLE} strokeWidth="1" />
+      </svg>
+    </Frame>
+  );
+}
+
 function Photo({ src, alt }: { src: string; alt: string }) {
   return (
     <img
@@ -303,7 +332,7 @@ export function ProjectCover({ cover, title }: { cover: string; title: string })
     case "kinetik":
       return <Photo src={kinetikImg} alt={`Portada del proyecto ${title}`} />;
     case "serenia":
-      return <Photo src={sereniaImg} alt={`Portada del proyecto ${title}`} />;
+      return <Serenia />;
     case "mobility":
       return <Mobility />;
     case "tul":
