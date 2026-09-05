@@ -3,6 +3,7 @@ import { getDesignSystem } from "@/data/designSystems";
 import type { CharacterStatus } from "@/data/designSystems";
 import { TopBar } from "@/components/portfolio/TopBar";
 import { CustomCursor } from "@/components/portfolio/CustomCursor";
+import { t, useLocale, type Locale } from "@/lib/i18n";
 
 export const Route = createFileRoute("/design-systems/$slug")({
   loader: ({ params }) => {
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/design-systems/$slug")({
       };
     }
     const title = `${loaderData.system.name} — Design System · Daniel Forero`;
-    const description = loaderData.system.subtitle;
+    const description = loaderData.system.subtitle.es;
     return {
       meta: [
         { title },
@@ -36,16 +37,18 @@ export const Route = createFileRoute("/design-systems/$slug")({
 });
 
 function NotFoundDesignSystem() {
+  const { locale } = useLocale();
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6">
       <div className="mono text-text-accent text-xs tracking-widest">// 404</div>
-      <h1 className="mt-4 text-4xl md:text-5xl">Ese design system no existe.</h1>
+      <h1 className="mt-4 text-4xl md:text-5xl">{t(locale, "designsystem.notFound")}</h1>
       <BackLink className="mt-8" />
     </main>
   );
 }
 
 function BackLink({ className = "" }: { className?: string }) {
+  const { locale } = useLocale();
   return (
     <Link
       to="/"
@@ -53,13 +56,14 @@ function BackLink({ className = "" }: { className?: string }) {
       data-cursor="open"
       className={`bg-glass border-glass-stroke text-text-primary hover:border-accent mono inline-flex w-fit items-center gap-2 rounded-md border px-4 py-2.5 text-xs tracking-widest uppercase transition-colors duration-300 ${className}`}
     >
-      ← Design Systems
+      {t(locale, "designsystem.back")}
     </Link>
   );
 }
 
 function DesignSystemPage() {
   const { system } = Route.useLoaderData();
+  const { locale } = useLocale();
 
   return (
     <>
@@ -77,44 +81,53 @@ function DesignSystemPage() {
         <h1 className="font-display mt-4 text-4xl leading-[1.05] text-text-primary md:text-5xl">
           {system.name}
         </h1>
-        <p className="text-text-secondary mt-3 text-base md:text-lg">{system.subtitle}</p>
+        <p className="text-text-secondary mt-3 text-base md:text-lg">{system.subtitle[locale]}</p>
 
         {/* Meta strip */}
         <div className="border-glass-stroke bg-glass mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-md border sm:grid-cols-4">
-          <MetaCell label="Producto" value={system.product} />
-          <MetaCell label="Fuente de verdad" value={system.sourceOfTruth} />
-          <MetaCell label="Generaciones" value={system.generations} />
-          <MetaCell label="Estado" value={system.statusLine} />
+          <MetaCell label={t(locale, "designsystem.meta.product")} value={system.product[locale]} />
+          <MetaCell
+            label={t(locale, "designsystem.meta.sourceOfTruth")}
+            value={system.sourceOfTruth[locale]}
+          />
+          <MetaCell
+            label={t(locale, "designsystem.meta.generations")}
+            value={system.generations[locale]}
+          />
+          <MetaCell
+            label={t(locale, "designsystem.meta.status")}
+            value={system.statusLine[locale]}
+          />
         </div>
 
         {system.constructionNotes.length > 0 && (
-          <Section title="Cómo se construyó">
+          <Section title={t(locale, "designsystem.section.construction")}>
             {system.constructionNotes.map((p) => (
-              <p key={p} className="text-text-secondary mb-4 leading-relaxed">
-                {p}
+              <p key={p.es} className="text-text-secondary mb-4 leading-relaxed">
+                {p[locale]}
               </p>
             ))}
           </Section>
         )}
 
         {system.timeline && (
-          <Section title="Cómo se construyó — generaciones">
+          <Section title={t(locale, "designsystem.section.generations")}>
             <div className="flex flex-col">
-              {system.timeline.map((t) => (
+              {system.timeline.map((era) => (
                 <div
-                  key={t.era}
+                  key={era.era}
                   className="border-border-subtle grid grid-cols-[64px_1fr] gap-4 border-t py-5 first:border-t-0"
                 >
-                  <div className="mono pt-1 text-xs text-[var(--ds-accent)]">{t.era}</div>
+                  <div className="mono pt-1 text-xs text-[var(--ds-accent)]">{era.era}</div>
                   <div>
-                    <p className="label-xs">{t.label}</p>
-                    <h3 className="text-text-primary mt-1 font-semibold">{t.title}</h3>
+                    <p className="label-xs">{era.label[locale]}</p>
+                    <h3 className="text-text-primary mt-1 font-semibold">{era.title[locale]}</h3>
                     <p className="text-text-secondary mt-2 text-sm leading-relaxed">
-                      {t.description}
+                      {era.description[locale]}
                     </p>
-                    {t.swatches && (
+                    {era.swatches && (
                       <div className="mt-3 flex flex-wrap gap-3">
-                        {t.swatches.map((s) => (
+                        {era.swatches.map((s) => (
                           <span key={s.hex} className="flex items-center gap-2">
                             <span
                               className="border-border-subtle h-4 w-4 rounded border"
@@ -135,7 +148,7 @@ function DesignSystemPage() {
         )}
 
         {system.rampSets?.map((ramp) => (
-          <Section key={ramp.label} title={ramp.label}>
+          <Section key={ramp.label.es} title={ramp.label[locale]}>
             <div className="border-border-subtle flex overflow-hidden rounded-md border">
               {ramp.steps.map((s) => (
                 <div
@@ -159,29 +172,29 @@ function DesignSystemPage() {
           </Section>
         ))}
 
-        <Section title="Tokens">
+        <Section title={t(locale, "designsystem.section.tokens")}>
           <div className="border-border-subtle border-t">
-            {system.tokens.map((t) => (
+            {system.tokens.map((token) => (
               <div
-                key={t.name}
+                key={token.name}
                 className="border-border-subtle grid grid-cols-[32px_1fr_1fr] items-center gap-4 border-b py-3"
               >
                 <span
                   className="border-border-subtle h-8 w-8 rounded-md border"
-                  style={{ background: t.hex }}
+                  style={{ background: token.hex }}
                 />
                 <span className="mono text-text-primary text-sm">
-                  {t.name}
-                  <span className="text-text-tertiary block text-xs">{t.hex}</span>
+                  {token.name}
+                  <span className="text-text-tertiary block text-xs">{token.hex}</span>
                 </span>
-                <span className="text-text-secondary text-sm">{t.note}</span>
+                <span className="text-text-secondary text-sm">{token.note[locale]}</span>
               </div>
             ))}
           </div>
         </Section>
 
         {system.gradients && (
-          <Section title="Gradientes">
+          <Section title={t(locale, "designsystem.section.gradients")}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {system.gradients.map((g) => (
                 <div
@@ -191,7 +204,7 @@ function DesignSystemPage() {
                   <div className="h-16" style={{ background: g.css }} />
                   <div className="bg-raised p-3">
                     <p className="text-text-primary text-sm font-semibold">{g.name}</p>
-                    <p className="text-text-tertiary mono text-xs">{g.stops}</p>
+                    <p className="text-text-tertiary mono text-xs">{g.stops[locale]}</p>
                   </div>
                 </div>
               ))}
@@ -199,30 +212,32 @@ function DesignSystemPage() {
           </Section>
         )}
 
-        <Section title="Tipografía">
-          <div className="border-border-subtle divide-border-subtle divide-y rounded-md border">
-            {system.typography.map((t) => (
-              <div key={t.role} className="flex items-baseline justify-between gap-4 p-4">
-                <span className="text-text-tertiary mono w-32 shrink-0 text-xs uppercase">
-                  {t.role}
-                </span>
-                <span className="text-text-primary flex-1" style={{ fontFamily: t.family }}>
-                  {t.sample}
-                </span>
-              </div>
-            ))}
-          </div>
-        </Section>
+        {system.typography && (
+          <Section title={t(locale, "designsystem.section.typography")}>
+            <div className="border-border-subtle divide-border-subtle divide-y rounded-md border">
+              {system.typography.map((tp) => (
+                <div key={tp.role.es} className="flex items-baseline justify-between gap-4 p-4">
+                  <span className="text-text-tertiary mono w-32 shrink-0 text-xs uppercase">
+                    {tp.role[locale]}
+                  </span>
+                  <span className="text-text-primary flex-1" style={{ fontFamily: tp.family }}>
+                    {tp.sample[locale]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
 
         {system.visualLanguage && (
-          <Section title="Vocabulario visual">
+          <Section title={t(locale, "designsystem.section.visualLanguage")}>
             <ul className="space-y-2">
               {system.visualLanguage.map((v) => (
                 <li
-                  key={v}
+                  key={v.es}
                   className="text-text-secondary border-border-subtle border-b pb-2 text-sm"
                 >
-                  → {v}
+                  → {v[locale]}
                 </li>
               ))}
             </ul>
@@ -230,7 +245,7 @@ function DesignSystemPage() {
         )}
 
         {system.characters && (
-          <Section title="Los 7 personajes — estado del rediseño">
+          <Section title={t(locale, "designsystem.section.characters")}>
             <div className="border-border-subtle border-t">
               {system.characters.map((c) => (
                 <div
@@ -238,8 +253,8 @@ function DesignSystemPage() {
                   className="border-border-subtle grid grid-cols-[100px_1fr_auto] items-center gap-4 border-b py-3"
                 >
                   <span className="text-text-primary text-sm font-semibold">{c.name}</span>
-                  <span className="text-text-secondary text-sm">{c.role}</span>
-                  <StatusBadge status={c.status} />
+                  <span className="text-text-secondary text-sm">{c.role[locale]}</span>
+                  <StatusBadge status={c.status} locale={locale} />
                 </div>
               ))}
             </div>
@@ -247,7 +262,7 @@ function DesignSystemPage() {
         )}
 
         {system.retiredPalette && (
-          <Section title="Paleta retirada — no reintroducir">
+          <Section title={t(locale, "designsystem.section.retiredPalette")}>
             <div className="border-border-subtle flex flex-wrap gap-4 rounded-md border border-dashed p-4">
               {system.retiredPalette.map((s) => (
                 <span key={s.hex} className="flex items-center gap-2">
@@ -265,22 +280,22 @@ function DesignSystemPage() {
         )}
 
         {system.gaps.length > 0 && (
-          <Section title="Brechas conocidas">
+          <Section title={t(locale, "designsystem.section.gaps")}>
             <ul className="space-y-2">
               {system.gaps.map((g) => (
                 <li
-                  key={g}
+                  key={g.es}
                   className="text-text-secondary border-border-subtle border-b pb-2 text-sm"
                 >
-                  → {g}
+                  → {g[locale]}
                 </li>
               ))}
             </ul>
           </Section>
         )}
 
-        <Section title="Estado actual">
-          <p className="text-text-secondary leading-relaxed">{system.currentStateNote}</p>
+        <Section title={t(locale, "designsystem.section.currentState")}>
+          <p className="text-text-secondary leading-relaxed">{system.currentStateNote[locale]}</p>
         </Section>
 
         <div className="border-border-subtle mt-16 border-t pt-10">
@@ -311,12 +326,12 @@ function MetaCell({ label, value }: { label: string; value: string }) {
   );
 }
 
-function StatusBadge({ status }: { status: CharacterStatus["status"] }) {
+function StatusBadge({ status, locale }: { status: CharacterStatus["status"]; locale: Locale }) {
   const map = {
-    redesigned: { text: "Rediseñado V2", cls: "text-success" },
-    unchanged: { text: "Original, sin cambios", cls: "text-text-tertiary" },
-    pending: { text: "Rediseño sin decidir", cls: "text-warning" },
+    redesigned: { key: "designsystem.status.redesigned", cls: "text-success" },
+    unchanged: { key: "designsystem.status.unchanged", cls: "text-text-tertiary" },
+    pending: { key: "designsystem.status.pending", cls: "text-warning" },
   } as const;
   const s = map[status];
-  return <span className={`mono text-xs ${s.cls}`}>{s.text}</span>;
+  return <span className={`mono text-xs ${s.cls}`}>{t(locale, s.key)}</span>;
 }

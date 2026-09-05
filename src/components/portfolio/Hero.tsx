@@ -1,8 +1,13 @@
 import { MagneticLink, Reveal } from "./primitives";
+import { t, useLocale } from "@/lib/i18n";
 
 export function Hero() {
+  const { locale } = useLocale();
   return (
-    <section id="top" className="relative overflow-hidden px-5 pt-40 pb-24 md:px-10 md:pt-56 md:pb-40">
+    <section
+      id="top"
+      className="relative overflow-hidden px-5 pt-40 pb-24 md:px-10 md:pt-56 md:pb-40"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 -right-40 size-[36rem] rounded-full opacity-25 blur-[120px]"
@@ -24,13 +29,12 @@ export function Hero() {
         <div className="mt-12 grid gap-10 border-t border-border-subtle pt-10 md:grid-cols-[1.2fr_1fr] md:gap-20">
           <Reveal delay={160}>
             <p className="max-w-xl text-xl leading-snug md:text-3xl">
-              Diseño y construyo productos digitales de punta a punta — del design system al código
-              en producción.
+              {t(locale, "hero.headline")}
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <MagneticLink href="#work">Ver trabajo</MagneticLink>
+              <MagneticLink href="#work">{t(locale, "hero.cta.work")}</MagneticLink>
               <MagneticLink href="#contact" variant="ghost">
-                Hablemos
+                {t(locale, "hero.cta.talk")}
               </MagneticLink>
             </div>
           </Reveal>
@@ -40,13 +44,14 @@ export function Hero() {
               <div>
                 <dt className="label-xs">Role</dt>
                 <dd className="text-text-primary mt-2 leading-relaxed">
-                  Senior UX/UI Designer
-                  <br />& Front End Developer
+                  {t(locale, "hero.role.line1")}
+                  <br />
+                  {t(locale, "hero.role.line2")}
                 </dd>
               </div>
               <div>
                 <dt className="label-xs">Experience</dt>
-                <dd className="text-text-primary mt-2">8+ years</dd>
+                <dd className="text-text-primary mt-2">{t(locale, "hero.experience")}</dd>
               </div>
               <div>
                 <dt className="label-xs">Based in</dt>

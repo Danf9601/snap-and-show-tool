@@ -3,8 +3,10 @@ import { Link } from "@tanstack/react-router";
 import { PROJECTS, type Project } from "@/data/projects";
 import { ProjectCover } from "./ProjectCover";
 import { Reveal, SectionHeader, StatusBadge } from "./primitives";
+import { t, useLocale } from "@/lib/i18n";
 
 function Card({ project }: { project: Project }) {
+  const { locale } = useLocale();
   const [hover, setHover] = useState(false);
   const big = project.flagship;
 
@@ -46,7 +48,7 @@ function Card({ project }: { project: Project }) {
             <span className="mono text-text-tertiary text-xs">{project.year}</span>
           </div>
           <p className="text-text-secondary mt-4 max-w-2xl text-sm leading-relaxed">
-            {project.summary}
+            {project.summary[locale]}
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {project.tags.map((t) => (
@@ -59,7 +61,7 @@ function Card({ project }: { project: Project }) {
             ))}
           </div>
           <span className="text-text-accent mono mt-6 inline-flex items-center gap-2 text-xs tracking-widest uppercase">
-            Ver case study →
+            {t(locale, "work.viewCaseStudy")}
           </span>
         </div>
       </article>
@@ -68,14 +70,15 @@ function Card({ project }: { project: Project }) {
 }
 
 export function Work() {
+  const { locale } = useLocale();
   return (
     <section id="work" className="px-5 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-[1400px]">
         <SectionHeader
           name="WORK"
           index="001"
-          title="Case studies donde el diseño y el código son la misma decisión."
-          intro="Nueve productos reales — fintech, movilidad, IA, e-commerce y sistemas de diseño propios. Kinetik Studio y Serenia son flagship: sistemas completos de mi autoría, del token al build."
+          title={t(locale, "work.headline")}
+          intro={t(locale, "work.intro")}
         />
 
         <div className="grid gap-5 md:grid-cols-6">

@@ -5,6 +5,7 @@ import { TopBar } from "@/components/portfolio/TopBar";
 import { CustomCursor } from "@/components/portfolio/CustomCursor";
 import { Reveal, StatusBadge } from "@/components/portfolio/primitives";
 import { ClientBadge } from "@/components/portfolio/ClientBadge";
+import { t, useLocale } from "@/lib/i18n";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -15,11 +16,14 @@ export const Route = createFileRoute("/work/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Case study no disponible — Daniel Forero" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Case study no disponible — Daniel Forero" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const title = `${loaderData.project.title} — Case study · Daniel Forero`;
-    const description = loaderData.project.summary.slice(0, 155);
+    const description = loaderData.project.summary.es.slice(0, 155);
     return {
       meta: [
         { title },
@@ -36,16 +40,18 @@ export const Route = createFileRoute("/work/$slug")({
 });
 
 function NotFoundCaseStudy() {
+  const { locale } = useLocale();
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6">
       <div className="mono text-text-accent text-xs tracking-widest">// 404</div>
-      <h1 className="mt-4 text-4xl md:text-5xl">Ese case study no existe.</h1>
+      <h1 className="mt-4 text-4xl md:text-5xl">{t(locale, "work.notFound")}</h1>
       <BackLink className="mt-8" />
     </main>
   );
 }
 
 function BackLink({ className = "" }: { className?: string }) {
+  const { locale } = useLocale();
   return (
     <Link
       to="/"
@@ -53,7 +59,7 @@ function BackLink({ className = "" }: { className?: string }) {
       data-cursor="open"
       className={`bg-glass border-glass-stroke text-text-primary hover:border-accent mono inline-flex w-fit items-center gap-2 rounded-md border px-4 py-2.5 text-xs tracking-widest uppercase transition-colors duration-300 ${className}`}
     >
-      ← Volver a Work
+      {t(locale, "work.back")}
     </Link>
   );
 }
@@ -82,6 +88,7 @@ function Section({
 
 function CaseStudy() {
   const { project } = Route.useLoaderData();
+  const { locale } = useLocale();
   let index = 0;
   const next = () => String(++index).padStart(3, "0");
 
@@ -124,7 +131,7 @@ function CaseStudy() {
               </div>
             )}
             <p className="mono text-text-secondary mt-4 text-xs tracking-widest uppercase">
-              {project.role}
+              {project.role[locale]}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {project.tags.map((t) => (
@@ -139,9 +146,9 @@ function CaseStudy() {
           </div>
         </header>
 
-        <Section name="OVERVIEW" index={next()} title="Qué era el reto">
+        <Section name="OVERVIEW" index={next()} title={t(locale, "work.section.overview")}>
           <p className="text-text-secondary max-w-3xl text-base leading-relaxed md:text-lg">
-            {project.summary}
+            {project.summary[locale]}
           </p>
         </Section>
 
@@ -150,15 +157,15 @@ function CaseStudy() {
             name="FEATURES"
             index={next()}
             title={
-              project.tags.some((t) => t === "Web Design" || t === "Art Direction")
-                ? "Qué incluye el sitio"
-                : "Qué hace el producto"
+              project.tags.some((tag) => tag === "Web Design" || tag === "Art Direction")
+                ? t(locale, "work.section.features.site")
+                : t(locale, "work.section.features.product")
             }
           >
             <div className="grid gap-4 md:grid-cols-2">
               {project.features.map((f) => (
                 <div
-                  key={f.title}
+                  key={f.title.es}
                   className="border-glass-stroke bg-glass flex gap-4 rounded-lg border p-5"
                   style={{ backdropFilter: "blur(24px)" }}
                 >
@@ -182,10 +189,10 @@ function CaseStudy() {
                   </span>
                   <div>
                     <div className="text-text-primary text-sm font-medium leading-snug">
-                      {f.title}
+                      {f.title[locale]}
                     </div>
                     <p className="text-text-secondary mt-1 text-sm leading-relaxed">
-                      {f.description}
+                      {f.description[locale]}
                     </p>
                   </div>
                 </div>
@@ -194,20 +201,23 @@ function CaseStudy() {
           </Section>
         ) : null}
 
-
         {project.stats?.length ? (
-          <Section name="IMPACT" index={next()} title="Números">
+          <Section name="IMPACT" index={next()} title={t(locale, "work.section.impact")}>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {project.stats.map((s) => (
                 <div
-                  key={s.label}
+                  key={s.label.es}
                   className="border-border-subtle bg-raised rounded-lg border p-6"
-                  style={{ boxShadow: "0 2px 4px rgba(0,0,0,.35), 0 6px 12px -2px rgba(0,0,0,.35)" }}
+                  style={{
+                    boxShadow: "0 2px 4px rgba(0,0,0,.35), 0 6px 12px -2px rgba(0,0,0,.35)",
+                  }}
                 >
                   <div className="text-text-accent font-display text-3xl font-bold md:text-4xl">
                     {s.value}
                   </div>
-                  <div className="text-text-secondary mt-2 text-sm leading-snug">{s.label}</div>
+                  <div className="text-text-secondary mt-2 text-sm leading-snug">
+                    {s.label[locale]}
+                  </div>
                 </div>
               ))}
             </div>
@@ -215,17 +225,17 @@ function CaseStudy() {
         ) : null}
 
         {project.process?.length ? (
-          <Section name="PROCESS" index={next()} title="Cómo se construyó">
+          <Section name="PROCESS" index={next()} title={t(locale, "work.section.process")}>
             <ol className="grid gap-4 md:grid-cols-2">
               {project.process.map((step, i) => (
                 <li
-                  key={step}
+                  key={step.es}
                   className="border-border-subtle bg-glass flex items-start gap-4 rounded-lg border p-5"
                 >
                   <span className="mono text-text-accent text-xs">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-text-primary text-sm leading-relaxed">{step}</span>
+                  <span className="text-text-primary text-sm leading-relaxed">{step[locale]}</span>
                 </li>
               ))}
             </ol>
@@ -233,12 +243,12 @@ function CaseStudy() {
         ) : null}
 
         {project.painPoints?.length ? (
-          <Section name="RESEARCH" index={next()} title="Pain points por frecuencia">
+          <Section name="RESEARCH" index={next()} title={t(locale, "work.section.research")}>
             <ul className="space-y-4">
               {project.painPoints.map((p) => (
-                <li key={p.label}>
+                <li key={p.label.es}>
                   <div className="flex items-baseline justify-between gap-4">
-                    <span className="text-text-primary text-sm">{p.label}</span>
+                    <span className="text-text-primary text-sm">{p.label[locale]}</span>
                     <span className="mono text-text-accent text-xs">{p.value}%</span>
                   </div>
                   <div className="bg-raised mt-2 h-1.5 overflow-hidden rounded-full">
@@ -254,14 +264,14 @@ function CaseStudy() {
         ) : null}
 
         {project.findings?.length ? (
-          <Section name="FINDINGS" index={next()} title="Qué aprendimos">
+          <Section name="FINDINGS" index={next()} title={t(locale, "work.section.findings")}>
             <ul className="grid gap-4 md:grid-cols-3">
               {project.findings.map((f) => (
                 <li
-                  key={f}
+                  key={f.es}
                   className="border-border-subtle bg-raised text-text-secondary rounded-lg border p-6 text-sm leading-relaxed"
                 >
-                  {f}
+                  {f[locale]}
                 </li>
               ))}
             </ul>
@@ -269,19 +279,19 @@ function CaseStudy() {
         ) : null}
 
         {project.tools?.length ? (
-          <Section name="TOOLS" index={next()} title="Con qué se hizo">
+          <Section name="TOOLS" index={next()} title={t(locale, "work.section.tools")}>
             <div className="flex flex-wrap gap-3">
-              {project.tools.map((t) => (
+              {project.tools.map((tool) => (
                 <div
-                  key={t.name}
+                  key={tool.name}
                   className="border-glass-stroke bg-glass rounded-md border px-4 py-3"
                   style={{ backdropFilter: "blur(24px)" }}
                 >
                   <div className="mono text-text-primary text-xs tracking-widest uppercase">
-                    {t.name}
+                    {tool.name}
                   </div>
-                  {t.note ? (
-                    <div className="text-text-tertiary mt-1 text-xs">{t.note}</div>
+                  {tool.note ? (
+                    <div className="text-text-tertiary mt-1 text-xs">{tool.note[locale]}</div>
                   ) : null}
                 </div>
               ))}
@@ -290,14 +300,14 @@ function CaseStudy() {
         ) : null}
 
         {project.wayOfWork?.length ? (
-          <Section name="WAY OF WORK" index={next()} title="Ritmo del equipo">
+          <Section name="WAY OF WORK" index={next()} title={t(locale, "work.section.wayOfWork")}>
             <ul className="space-y-3">
               {project.wayOfWork.map((w, i) => (
-                <li key={w} className="flex gap-4">
+                <li key={w.es} className="flex gap-4">
                   <span className="mono text-text-accent text-xs">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-text-secondary text-sm leading-relaxed">{w}</span>
+                  <span className="text-text-secondary text-sm leading-relaxed">{w[locale]}</span>
                 </li>
               ))}
             </ul>

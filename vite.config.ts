@@ -19,6 +19,7 @@ const PROJECT_PATHS = [
   "/work/angelemus",
   "/design-systems/kinetik",
   "/design-systems/serenia",
+  "/design-systems/launch-mobility",
 ];
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";

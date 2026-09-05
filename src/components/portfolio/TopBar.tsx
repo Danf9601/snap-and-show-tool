@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { t, useLocale } from "@/lib/i18n";
+import { LanguageSwitch } from "./LanguageSwitch";
 
 const NAV = [
   { label: "Work", href: "#work" },
@@ -19,6 +21,7 @@ function bogotaTime() {
 
 export function TopBar() {
   const [clock, setClock] = useState("--:--:--");
+  const { locale } = useLocale();
 
   useEffect(() => {
     setClock(bogotaTime());
@@ -61,13 +64,16 @@ export function TopBar() {
               </a>
             ))}
           </div>
-          <a
-            href="#contact"
-            data-cursor="talk"
-            className="border-glass-stroke bg-glass hover:border-accent hover:text-accent rounded-sm border px-4 py-2 text-xs transition-colors duration-300"
-          >
-            Hablemos
-          </a>
+          <div className="flex items-center gap-3">
+            <LanguageSwitch />
+            <a
+              href="#contact"
+              data-cursor="talk"
+              className="border-glass-stroke bg-glass hover:border-accent hover:text-accent rounded-sm border px-4 py-2 text-xs transition-colors duration-300"
+            >
+              {t(locale, "nav.contact")}
+            </a>
+          </div>
         </div>
       </nav>
     </header>

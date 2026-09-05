@@ -1,5 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Reveal, SectionHeader, StatusBadge } from "./primitives";
+import { t, useLocale } from "@/lib/i18n";
+import { TokenInspector } from "./uilab/TokenInspector";
+import { PipelineVisualizer } from "./uilab/PipelineVisualizer";
+import { ContrastChecker } from "./uilab/ContrastChecker";
+import { FleetMap } from "./uilab/FleetMap";
+import { ThemeModePlayground } from "./uilab/ThemeModePlayground";
+import { CommandPalette } from "./uilab/CommandPalette";
+import { PaymentErrorSimulator } from "./uilab/PaymentErrorSimulator";
+import { StreakEngine } from "./uilab/StreakEngine";
+import { PRTimelineReplay } from "./uilab/PRTimelineReplay";
+import { LocaleFormatPlayground } from "./uilab/LocaleFormatPlayground";
 
 function Frame({
   title,
@@ -51,7 +62,10 @@ function DashboardDemo() {
     if (reduce) return;
     const id = window.setInterval(() => {
       setTick((t) => t + 1);
-      setLogs((l) => [...l.slice(-5), LOG_LINES[Math.floor(Math.random() * LOG_LINES.length)] ?? LOG_LINES[0]!]);
+      setLogs((l) => [
+        ...l.slice(-5),
+        LOG_LINES[Math.floor(Math.random() * LOG_LINES.length)] ?? LOG_LINES[0]!,
+      ]);
     }, 1600);
     return () => window.clearInterval(id);
   }, []);
@@ -65,15 +79,16 @@ function DashboardDemo() {
   }, [tick, range]);
 
   const path = points
-    .map((p, i) => `${i === 0 ? "M" : "L"} ${((i / 23) * 100).toFixed(2)} ${((1 - p) * 100).toFixed(2)}`)
+    .map(
+      (p, i) =>
+        `${i === 0 ? "M" : "L"} ${((i / 23) * 100).toFixed(2)} ${((1 - p) * 100).toFixed(2)}`,
+    )
     .join(" ");
 
   return (
     <div className="p-4 md:p-5">
       <div className="flex items-center justify-between">
-        <div className="mono text-text-tertiary text-[10px] tracking-widest">
-          AI COMMAND CENTER
-        </div>
+        <div className="mono text-text-tertiary text-[10px] tracking-widest">AI COMMAND CENTER</div>
         <StatusBadge label="LIVE" />
       </div>
 
@@ -210,11 +225,7 @@ function CheckoutDemo() {
             />
             <div
               className={`mono mt-2 text-[10px] transition-colors ${
-                card.length === 0
-                  ? "text-text-tertiary"
-                  : valid
-                    ? "text-success"
-                    : "text-warning"
+                card.length === 0 ? "text-text-tertiary" : valid ? "text-success" : "text-warning"
               }`}
             >
               {card.length === 0
@@ -330,7 +341,11 @@ function QuoteDemo() {
           className="accent-[var(--accent-default)] mt-3 w-full"
         />
         <div className="mono text-text-tertiary mt-1 text-[10px]">
-          {rush > 1 ? "▸ recargo por entrega acelerada +25%" : rush < 1 ? "✓ descuento por timeline holgado −8%" : "▸ ritmo estándar"}
+          {rush > 1
+            ? "▸ recargo por entrega acelerada +25%"
+            : rush < 1
+              ? "✓ descuento por timeline holgado −8%"
+              : "▸ ritmo estándar"}
         </div>
       </div>
 
@@ -416,22 +431,26 @@ function PlayerDemo() {
 /* ---------- Section ---------- */
 
 export function UILab() {
+  const { locale } = useLocale();
   return (
-    <section id="ui-lab" className="border-border-subtle bg-surface/40 border-y px-5 py-24 md:px-10 md:py-36">
+    <section
+      id="ui-lab"
+      className="border-border-subtle bg-surface/40 border-y px-5 py-24 md:px-10 md:py-36"
+    >
       <div className="mx-auto max-w-[1400px]">
         <SectionHeader
           name="UI_LAB"
           index="002"
-          title="Demos funcionales, no capturas."
-          intro="Cada pieza corre en vivo en esta página: estados reales, validación instantánea y animación a 60fps. Abre devtools si quieres — para eso están."
+          title={t(locale, "uilab.title")}
+          intro={t(locale, "uilab.intro")}
         />
 
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           <Reveal>
             <div className="card-surface glow-hover h-full p-5 md:p-6">
-              <h3 className="text-xl">AI Command Center</h3>
+              <h3 className="text-xl">{t(locale, "uilab.item.dashboard.title")}</h3>
               <p className="text-text-secondary mt-2 mb-5 text-sm">
-                Métricas en vivo, gráfico animado y feed de logs tipo terminal.
+                {t(locale, "uilab.item.dashboard.desc")}
               </p>
               <Frame title="kinetik.studio/command-center">
                 <DashboardDemo />
@@ -441,9 +460,9 @@ export function UILab() {
 
           <Reveal delay={100}>
             <div className="card-surface glow-hover h-full p-5 md:p-6">
-              <h3 className="text-xl">Checkout rápido</h3>
+              <h3 className="text-xl">{t(locale, "uilab.item.checkout")}</h3>
               <p className="text-text-secondary mt-2 mb-5 text-sm">
-                Flujo de pago en tres pasos con validación en tiempo real.
+                {t(locale, "uilab.item.checkout.desc")}
               </p>
               <Frame title="pos.checkout/flow">
                 <CheckoutDemo />
@@ -453,9 +472,9 @@ export function UILab() {
 
           <Reveal delay={60}>
             <div className="card-surface glow-hover h-full p-5 md:p-6">
-              <h3 className="text-xl">Cotizador SaaS</h3>
+              <h3 className="text-xl">{t(locale, "uilab.item.quoter")}</h3>
               <p className="text-text-secondary mt-2 mb-5 text-sm">
-                Alcance y timeline configurables con resumen dinámico.
+                {t(locale, "uilab.item.quoter.desc")}
               </p>
               <Frame title="kinetik.studio/quote">
                 <QuoteDemo />
@@ -465,14 +484,45 @@ export function UILab() {
 
           <Reveal delay={140}>
             <div className="card-surface glow-hover h-full p-5 md:p-6">
-              <h3 className="text-xl">Player Serenia</h3>
+              <h3 className="text-xl">{t(locale, "uilab.item.player")}</h3>
               <p className="text-text-secondary mt-2 mb-5 text-sm">
-                Única excepción cromática del sitio: paleta violeta/esmeralda de Serenia.
+                {t(locale, "uilab.item.player.desc")}
               </p>
               <Frame title="serenia" chrome="mobile">
                 <PlayerDemo />
               </Frame>
             </div>
+          </Reveal>
+
+          <Reveal delay={20}>
+            <TokenInspector />
+          </Reveal>
+          <Reveal delay={80}>
+            <PipelineVisualizer />
+          </Reveal>
+          <Reveal delay={40}>
+            <ContrastChecker />
+          </Reveal>
+          <Reveal delay={100}>
+            <FleetMap />
+          </Reveal>
+          <Reveal delay={60}>
+            <ThemeModePlayground />
+          </Reveal>
+          <Reveal delay={120}>
+            <CommandPalette />
+          </Reveal>
+          <Reveal delay={20}>
+            <PaymentErrorSimulator />
+          </Reveal>
+          <Reveal delay={80}>
+            <StreakEngine />
+          </Reveal>
+          <Reveal delay={40}>
+            <PRTimelineReplay />
+          </Reveal>
+          <Reveal delay={100}>
+            <LocaleFormatPlayground />
           </Reveal>
         </div>
       </div>
