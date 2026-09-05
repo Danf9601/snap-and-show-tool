@@ -1,0 +1,12 @@
+# Normalize all text files to LF line endings regardless of OS.
+# Prevents Windows checkouts (CRLF) from showing every file as "modified"
+# when the repo (and Lovable's own commits) are LF.
+* text=auto eol=lf
+
+# Binary assets — never touch line endings.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
