@@ -14,7 +14,7 @@ const STACK = [
 ];
 
 const TIMELINE = [
-  { years: "2023 — hoy", role: "Senior UX/UI Designer & Front End Developer", where: "Producto propio + consultoría (Kinetik Studio, Serenia)" },
+  { years: "2023 — hoy", role: "Senior UX/UI Designer & Front End Developer", where: "Kinetik Studio (front end, UX/UI, estrategia de IA) + producto propio (Serenia)" },
   { years: "2021 — 2023", role: "Product Designer / Frontend Lead", where: "Fintech y beneficios corporativos LATAM (Mercado Pago POS, Ontop, Commdesk)" },
   { years: "2018 — 2021", role: "UX/UI Designer", where: "Tul, agencias y equipos de producto en Bogotá" },
 ];

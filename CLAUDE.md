@@ -1,6 +1,8 @@
 # CLAUDE.md — Contexto del proyecto para Claude Code
 
-Portafolio personal de **Daniel Forero** (Kinetik Studio) — senior UX/UI Designer & Front End Developer, 8+ años de experiencia, Bogotá. Este archivo es contexto persistente para cualquier sesión de Claude Code que trabaje en este repo. Léelo completo antes de tocar código.
+Portafolio personal de **Daniel Forero** — senior UX/UI Designer & Front End Developer, 8+ años de experiencia, Bogotá. Este archivo es contexto persistente para cualquier sesión de Claude Code que trabaje en este repo. Léelo completo antes de tocar código.
+
+**Ojo con Kinetik Studio**: Daniel trabaja ahí como Front End Developer, UX/UI Designer y estratega de IA — **no es dueño ni fundador** del estudio. Es el único caso del portafolio con esta distinción (Serenia sí es 100% suyo). No redactes ni edites copy que lo presente como propietario ("mi estudio", "fundé", "mi empresa").
 
 ## Cómo se está construyendo este sitio (importante para no duplicar trabajo)
 
@@ -57,8 +59,8 @@ Covers de proyecto: **100% SVG generativo en código**, en `src/components/portf
 
 | slug | Contenido | clientLogo | Notas |
 |---|---|---|---|
-| `kinetik` | Flagship, propio | — | No viene de Behance |
-| `serenia` | Flagship, propio | — | No viene de Behance |
+| `kinetik` | Flagship, completo (features, stats, process, findings, tools) | — | No viene de Behance. Daniel trabaja ahí (front/UX/IA) — no es dueño |
+| `serenia` | Flagship, completo (features, stats, process, findings, tools), producto 100% propio de Daniel | — | No viene de Behance |
 | `launch-mobility` | Completo (stats, process, painPoints, findings, tools) | — | Verificado contra Behance real |
 | `tul` | Completo (stats, features, process, tools, wayOfWork) | ✅ `tul` | Verificado |
 | `snappr-ai` | Completo (features, process, findings, tools) | ✅ `snappr` | Verificado — status `IN PROGRESS`, sin stats (es concepto/research, no producción) |

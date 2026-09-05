@@ -27,13 +27,65 @@ export const PROJECTS: Project[] = [
     slug: "kinetik",
     title: "Kinetik Studio",
     year: "2025",
-    role: "Product Design · Design System · Frontend",
+    role: "Front End Development · UX/UI Design · Estrategia de IA",
     summary:
-      "AI Command Center completo: arquitectura de producto, design system 'Midnight Pro' con tokens semánticos y componentes de dashboard construidos para lectura en tiempo real bajo carga.",
+      "Kinetik Studio es un estudio de automatización e incubadora de productos digitales que construye sistemas inteligentes e interfaces que escalan negocios, sobre tres pilares: automatización de workflows, agentes de IA y diseño/desarrollo web y de producto. Mi rol ahí cubre el front end, el diseño UX/UI y la estrategia de IA de los productos.",
     tags: ["Product Design", "Design System", "Frontend"],
     status: "SHIPPED",
     cover: "kinetik",
     flagship: true,
+    features: [
+      {
+        title: "Workflow & Automatización",
+        description:
+          "Ingeniería de flujos operacionales que reemplazan trabajo manual repetitivo por código autónomo — la base operativa de los productos de Kinetik.",
+      },
+      {
+        title: "Agentes de IA",
+        description:
+          "Diseño y estrategia de agentes conversacionales multilingües disponibles 24/7 en varios canales (chat web, WhatsApp, telefonía), con memoria de datos propia y acceso a herramientas.",
+      },
+      {
+        title: "Diseño y desarrollo de producto",
+        description:
+          "Front end de sitios de alto rendimiento, plataformas SaaS y productos móviles — de Figma a producción, sobre un design system propio.",
+      },
+      {
+        title: "Procesamiento de conocimiento interno",
+        description:
+          "Vectorización y búsqueda en tiempo real sobre documentación interna, para que los agentes respondan con contexto real del negocio en vez de respuestas genéricas.",
+      },
+    ],
+    stats: [
+      { value: "3", label: "Pilares de servicio" },
+      { value: "24/7", label: "Agentes disponibles" },
+      { value: "3", label: "Canales de agente (web, WhatsApp, telefonía)" },
+    ],
+    process: [
+      'Design system propio ("Midnight Pro") como fuente de verdad antes de construir cualquier pantalla',
+      "Front end en Next.js/React/TypeScript sobre los tokens de Figma, sin hex sueltos",
+      "Estrategia de agentes de IA: qué canal, qué memoria de datos, qué límites de ejecución autónoma tiene cada agente",
+      "Automatización de los procesos operativos que rodean al producto (Make.com/Zapier) para que el agente y el front end no vivan aislados del resto del negocio",
+    ],
+    findings: [
+      'El sistema de diseño "Midnight Pro" de este portafolio es el mismo que diseñé para Kinetik Studio — mismos tokens de color y tipografía, aplicados aquí como portafolio y allá como panel de control tipo terminal/sistema operativo.',
+    ],
+    tools: [
+      { name: "Figma", note: "Diseño y design system" },
+      { name: "Next.js", note: "Front end" },
+      { name: "React", note: "Front end" },
+      { name: "TypeScript", note: "Front end" },
+      { name: "Tailwind CSS", note: "Front end" },
+      { name: "Claude 3.5 Sonnet", note: "Lógica de IA" },
+      { name: "OpenAI API", note: "Lógica de IA" },
+      { name: "LangChain", note: "Lógica de IA" },
+      { name: "Vercel AI SDK", note: "Lógica de IA" },
+      { name: "Supabase", note: "Datos e infraestructura" },
+      { name: "PostgreSQL", note: "Datos e infraestructura" },
+      { name: "GraphQL", note: "Datos e infraestructura" },
+      { name: "Make.com", note: "Automatización" },
+      { name: "Zapier", note: "Automatización" },
+    ],
   },
   {
     slug: "serenia",
