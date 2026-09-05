@@ -17,6 +17,8 @@ const PROJECT_PATHS = [
   "/work/ontop",
   "/work/commdesk",
   "/work/angelemus",
+  "/design-systems/kinetik",
+  "/design-systems/serenia",
 ];
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
