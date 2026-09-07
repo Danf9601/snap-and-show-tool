@@ -159,6 +159,8 @@ function DashboardDemo() {
 /* ---------- Demo 2: Checkout ---------- */
 
 function CheckoutDemo() {
+  const { locale } = useLocale();
+  const es = locale === "es";
   const [step, setStep] = useState(0);
   const [card, setCard] = useState("");
   const valid = card.replace(/\s/g, "").length === 16;
@@ -186,16 +188,16 @@ function CheckoutDemo() {
       <div className="mt-5 min-h-[240px]">
         {step === 0 && (
           <div>
-            <div className="label-xs">Total a pagar</div>
+            <div className="label-xs">{es ? "Total a pagar" : "Total to pay"}</div>
             <div className="font-[family-name:var(--font-display)] mt-1 text-4xl tabular-nums">
               $148.000
             </div>
             <div className="mono text-text-tertiary mt-1 text-[10px]">COP · POS #0042</div>
             <ul className="mt-5 space-y-2 text-xs">
               {[
-                ["Plan Pro — mensual", "$120.000"],
-                ["IVA 19%", "$22.800"],
-                ["Servicio", "$5.200"],
+                [es ? "Plan Pro — mensual" : "Plan Pro — monthly", "$120.000"],
+                [es ? "IVA 19%" : "VAT 19%", "$22.800"],
+                [es ? "Servicio" : "Service", "$5.200"],
               ].map(([k, v]) => (
                 <li key={k} className="text-text-secondary flex justify-between">
                   <span>{k}</span>
@@ -207,19 +209,19 @@ function CheckoutDemo() {
               onClick={() => setStep(1)}
               className="bg-accent text-text-on-accent hover:bg-accent-hover mt-6 w-full rounded-md py-3 text-sm transition-colors duration-300"
             >
-              Continuar
+              {es ? "Continuar" : "Continue"}
             </button>
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <div className="label-xs">Tarjeta</div>
+            <div className="label-xs">{es ? "Tarjeta" : "Card"}</div>
             <input
               value={card}
               onChange={(e) => setCard(format(e.target.value))}
               inputMode="numeric"
-              aria-label="Número de tarjeta"
+              aria-label={es ? "Número de tarjeta" : "Card number"}
               placeholder="4242 4242 4242 4242"
               className="mono bg-raised border-border-subtle focus:border-accent mt-2 w-full rounded-sm border px-3 py-3 text-sm outline-none transition-colors duration-300"
             />
@@ -229,15 +231,21 @@ function CheckoutDemo() {
               }`}
             >
               {card.length === 0
-                ? "16 dígitos"
+                ? es
+                  ? "16 dígitos"
+                  : "16 digits"
                 : valid
-                  ? "✓ tarjeta válida"
-                  : `▸ ${16 - card.replace(/\s/g, "").length} dígitos restantes`}
+                  ? es
+                    ? "✓ tarjeta válida"
+                    : "✓ valid card"
+                  : es
+                    ? `▸ ${16 - card.replace(/\s/g, "").length} dígitos restantes`
+                    : `▸ ${16 - card.replace(/\s/g, "").length} digits left`}
             </div>
             <div className="mt-4 grid grid-cols-2 gap-2">
               <input
-                aria-label="Vencimiento"
-                placeholder="MM/AA"
+                aria-label={es ? "Vencimiento" : "Expiry"}
+                placeholder={es ? "MM/AA" : "MM/YY"}
                 className="mono bg-raised border-border-subtle focus:border-accent rounded-sm border px-3 py-3 text-sm outline-none"
               />
               <input
@@ -251,7 +259,7 @@ function CheckoutDemo() {
               onClick={() => setStep(2)}
               className="bg-accent text-text-on-accent hover:bg-accent-hover mt-6 w-full rounded-md py-3 text-sm transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-30"
             >
-              Pagar $148.000
+              {es ? "Pagar $148.000" : "Pay $148,000"}
             </button>
           </div>
         )}
@@ -261,7 +269,7 @@ function CheckoutDemo() {
             <div className="border-success text-success grid size-14 place-items-center rounded-full border-2 text-2xl">
               ✓
             </div>
-            <p className="mt-5 text-lg">Pago aprobado</p>
+            <p className="mt-5 text-lg">{es ? "Pago aprobado" : "Payment approved"}</p>
             <p className="mono text-text-tertiary mt-1 text-[10px]">AUTH_ID · 8F21-QK09</p>
             <button
               onClick={() => {
@@ -270,7 +278,7 @@ function CheckoutDemo() {
               }}
               className="border-glass-stroke bg-glass hover:border-accent mt-6 rounded-sm border px-4 py-2 text-xs transition-colors"
             >
-              Reiniciar demo
+              {es ? "Reiniciar demo" : "Reset demo"}
             </button>
           </div>
         )}
@@ -282,13 +290,15 @@ function CheckoutDemo() {
 /* ---------- Demo 3: Quote flow ---------- */
 
 const SCOPES = [
-  { id: "ds", label: "Design System", price: 6800 },
-  { id: "ui", label: "Product UI", price: 5200 },
-  { id: "fe", label: "Frontend build", price: 7400 },
-  { id: "lab", label: "Prototipos", price: 2600 },
+  { id: "ds", label: { es: "Design System", en: "Design System" }, price: 6800 },
+  { id: "ui", label: { es: "Product UI", en: "Product UI" }, price: 5200 },
+  { id: "fe", label: { es: "Frontend build", en: "Frontend build" }, price: 7400 },
+  { id: "lab", label: { es: "Prototipos", en: "Prototypes" }, price: 2600 },
 ];
 
 function QuoteDemo() {
+  const { locale } = useLocale();
+  const es = locale === "es";
   const [selected, setSelected] = useState<string[]>(["ds"]);
   const [weeks, setWeeks] = useState(6);
 
@@ -317,7 +327,7 @@ function QuoteDemo() {
                   : "border-border-subtle bg-raised text-text-secondary hover:border-glass-stroke"
               }`}
             >
-              <span className="block">{s.label}</span>
+              <span className="block">{s.label[locale]}</span>
               <span className="mono text-text-tertiary mt-1 block text-[10px]">
                 ${s.price.toLocaleString("en-US")}
               </span>
@@ -329,35 +339,44 @@ function QuoteDemo() {
       <div className="mt-5">
         <div className="flex items-center justify-between">
           <span className="label-xs">Timeline</span>
-          <span className="mono text-text-primary text-[11px]">{weeks} semanas</span>
+          <span className="mono text-text-primary text-[11px]">
+            {weeks} {es ? "semanas" : "weeks"}
+          </span>
         </div>
         <input
           type="range"
           min={3}
           max={12}
           value={weeks}
-          aria-label="Semanas de proyecto"
+          aria-label={es ? "Semanas de proyecto" : "Project weeks"}
           onChange={(e) => setWeeks(Number(e.target.value))}
           className="accent-[var(--accent-default)] mt-3 w-full"
         />
         <div className="mono text-text-tertiary mt-1 text-[10px]">
           {rush > 1
-            ? "▸ recargo por entrega acelerada +25%"
+            ? es
+              ? "▸ recargo por entrega acelerada +25%"
+              : "▸ rush-delivery surcharge +25%"
             : rush < 1
-              ? "✓ descuento por timeline holgado −8%"
-              : "▸ ritmo estándar"}
+              ? es
+                ? "✓ descuento por timeline holgado −8%"
+                : "✓ discount for a relaxed timeline −8%"
+              : es
+                ? "▸ ritmo estándar"
+                : "▸ standard pace"}
         </div>
       </div>
 
       <div className="bg-raised mt-5 flex items-end justify-between rounded-sm p-4">
         <div>
-          <div className="label-xs">Estimado</div>
+          <div className="label-xs">{es ? "Estimado" : "Estimate"}</div>
           <div className="mono text-text-accent mt-1 text-2xl tabular-nums transition-all duration-300">
             ${total.toLocaleString("en-US")}
           </div>
         </div>
         <span className="mono text-text-tertiary text-[10px]">
-          {selected.length} módulo{selected.length === 1 ? "" : "s"}
+          {selected.length} {es ? "módulo" : "module"}
+          {selected.length === 1 ? "" : "s"}
         </span>
       </div>
     </div>
@@ -367,6 +386,8 @@ function QuoteDemo() {
 /* ---------- Demo 4: Serenia player (paleta excepción) ---------- */
 
 function PlayerDemo() {
+  const { locale } = useLocale();
+  const es = locale === "es";
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(28);
   const raf = useRef(0);
@@ -402,8 +423,10 @@ function PlayerDemo() {
           boxShadow: playing ? "0 0 60px -10px #7c3aed" : "0 0 30px -18px #7c3aed",
         }}
       />
-      <p className="mt-6 font-[family-name:var(--font-display)] text-lg">Respiración profunda</p>
-      <p className="text-text-secondary text-xs">Guiada · 12 min</p>
+      <p className="mt-6 font-[family-name:var(--font-display)] text-lg">
+        {es ? "Respiración profunda" : "Deep breathing"}
+      </p>
+      <p className="text-text-secondary text-xs">{es ? "Guiada · 12 min" : "Guided · 12 min"}</p>
 
       <div className="bg-glass mt-6 h-1 w-full overflow-hidden rounded-full">
         <div
@@ -418,7 +441,9 @@ function PlayerDemo() {
 
       <button
         onClick={() => setPlaying((p) => !p)}
-        aria-label={playing ? "Pausar sesión" : "Reproducir sesión"}
+        aria-label={
+          playing ? (es ? "Pausar sesión" : "Pause session") : es ? "Reproducir sesión" : "Play session"
+        }
         className="mt-6 grid size-12 place-items-center rounded-full text-sm transition-transform duration-300 active:scale-90"
         style={{ background: "#a78bfa", color: "#1e1b4b" }}
       >
