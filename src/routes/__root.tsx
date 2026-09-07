@@ -118,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap",
       },
       { rel: "icon", href: withBase("favicon.ico"), type: "image/x-icon" },
-      { rel: "apple-touch-icon", href: withBase("favicon.ico") },
+      { rel: "apple-touch-icon", href: withBase("apple-touch-icon.png") },
       { rel: "sitemap", type: "application/xml", href: withBase("sitemap.xml") },
     ],
   }),
