@@ -87,6 +87,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Daniel Forero" },
       {
+        name: "google-site-verification",
+        content: "-s6oc5Cvn0MbGNhYAI_Au9Q3rDrvugP3o9CMtnXp2U0",
+      },
+      {
         name: "keywords",
         content:
           "Daniel Forero, UX Designer, UI Designer, Front End Developer, Design Systems, Bogotá, portafolio",
