@@ -29,8 +29,8 @@ export const PROJECTS: Project[] = [
     title: "Kinetik Studio",
     year: "2025",
     role: {
-      es: "Front End Development · UX/UI Design · Estrategia de IA",
-      en: "Front End Development · UX/UI Design · AI Strategy",
+      es: "Senior UX/UI Designer · Front-End Developer · Estrategia de IA",
+      en: "Senior UX/UI Designer · Front-End Developer · AI Strategy",
     },
     summary: {
       es: "Kinetik Studio es un estudio de automatización e incubadora de productos digitales que construye sistemas inteligentes e interfaces que escalan negocios, sobre tres pilares: automatización de workflows, agentes de IA y diseño/desarrollo web y de producto. Mi rol ahí cubre el front end, el diseño UX/UI y la estrategia de IA de los productos.",
@@ -127,8 +127,8 @@ export const PROJECTS: Project[] = [
     title: "Serenia",
     year: "2025",
     role: {
-      es: "Founder · Full-Stack Product · Flutter + Supabase",
-      en: "Founder · Full-Stack Product · Flutter + Supabase",
+      es: "Founder · Full-Stack Engineer · UX/UI Designer",
+      en: "Founder · Full-Stack Engineer · UX/UI Designer",
     },
     summary: {
       es: "App de meditación guiada en Flutter + Supabase. Sistema propio de color y movimiento, siete personajes ilustrados y una sesión de audio que se siente sin fricción desde el primer tap.",
@@ -262,7 +262,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "launch-mobility",
-    title: "Launch Mobility — UX/UI Redesign",
+    title: "Launch Mobility — Senior UX/UI Designer & Front-End Developer",
     year: "2024",
     role: {
       es: "Senior UX/UI Designer · Front-End Development · Design Systems",
@@ -583,7 +583,7 @@ export const PROJECTS: Project[] = [
     slug: "snappr-ai",
     title: "Snappr AI",
     year: "2024",
-    role: { es: "UX Research · Product Design · UI", en: "UX Research · Product Design · UI" },
+    role: { es: "UX Designer", en: "UX Designer" },
     summary: {
       es: "Producto de fotografía asistida por IA para e-commerce: 'toma tus fotos como un pro'.",
       en: "AI-assisted photography product for e-commerce: 'take your photos like a pro.'",
@@ -826,7 +826,7 @@ export const PROJECTS: Project[] = [
     slug: "ontop",
     title: "Ontop — Perks Landing Page",
     year: "2023",
-    role: { es: "UI Design · Landing", en: "UI Design · Landing" },
+    role: { es: "UX Designer", en: "UX Designer" },
     summary: {
       es: "Landing para una plataforma de beneficios corporativos.",
       en: "Landing page for a corporate benefits platform.",

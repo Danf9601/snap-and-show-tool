@@ -105,6 +105,7 @@ export const UI_STRINGS: Record<Locale, Record<string, string>> = {
     "designsystems.serenia.subtitle": "Serenia — V2, tercera generación de identidad visual",
     "designsystems.launchmobility.subtitle":
       "Launch Mobility — arquitectura de tokens y gobernanza",
+    "expertise.headline": "Cómo trabajo.",
     "expertise.01.title": "Product Design",
     "expertise.01.body":
       "Descubrimiento, arquitectura de información y flujos. La interfaz sale de una decisión de producto, no de una plantilla.",
@@ -118,6 +119,9 @@ export const UI_STRINGS: Record<Locale, Record<string, string>> = {
     "expertise.04.body":
       "De la idea a un prototipo funcional en días — la mejor forma de validar una interacción es poder tocarla.",
     "contact.headline": "¿Tienes un producto que merece estar bien construido?",
+    "contact.cta.whatsapp": "WhatsApp",
+    "contact.cta.email": "Escríbeme",
+    "contact.cta.behance": "Ver Behance",
     "lab.tokenInspector.title": "Token Inspector",
     "lab.tokenInspector.desc":
       "Pega CSS con hex sueltos — te dice qué token semántico debería usar cada uno.",
@@ -216,6 +220,7 @@ export const UI_STRINGS: Record<Locale, Record<string, string>> = {
     "designsystems.kinetik.subtitle": "Kinetik Studio — dark-only, gray + a single cyan accent",
     "designsystems.serenia.subtitle": "Serenia — V2, third generation of visual identity",
     "designsystems.launchmobility.subtitle": "Launch Mobility — token architecture and governance",
+    "expertise.headline": "How I work.",
     "expertise.01.title": "Product Design",
     "expertise.01.body":
       "Discovery, information architecture, and flows. The interface comes from a product decision, not a template.",
@@ -229,6 +234,9 @@ export const UI_STRINGS: Record<Locale, Record<string, string>> = {
     "expertise.04.body":
       "From idea to a functional prototype in days — the best way to validate an interaction is to be able to touch it.",
     "contact.headline": "Have a product that deserves to be built right?",
+    "contact.cta.whatsapp": "WhatsApp",
+    "contact.cta.email": "Email me",
+    "contact.cta.behance": "See Behance",
     "lab.tokenInspector.title": "Token Inspector",
     "lab.tokenInspector.desc":
       "Paste CSS with loose hex values — it tells you which semantic token each one should be.",

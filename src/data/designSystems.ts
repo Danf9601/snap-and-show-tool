@@ -304,25 +304,25 @@ export const DESIGN_SYSTEMS: DesignSystem[] = [
     slug: "launch-mobility",
     name: "Launch Mobility Design System",
     subtitle: {
-      es: "App de conductor para gestión de flotas — arquitectura de tokens y gobernanza multimarca",
-      en: "Fleet-management driver app — multi-brand token architecture and governance",
+      es: "App de conductor para movilidad multimarca — arquitectura de tokens de 3 marcas y gobernanza formal",
+      en: "Multi-brand mobility driver app — 3-brand token architecture and formal governance",
     },
-    accent: "#22d3ee",
+    accent: "#387FF7",
     product: {
-      es: "App de conductor para gestión de flotas, con dos marcas activas (marca principal + una segunda marca)",
-      en: "Fleet-management driver app, with two active brands (a primary brand + a second brand)",
+      es: "App de conductor para movilidad, con tres marcas de primer nivel activas (marca principal + dos marcas asociadas) y seis líneas internas de producto",
+      en: "Mobility driver app, with three active top-tier brands (a house brand + two partner brands) and six internal product lines",
     },
     sourceOfTruth: {
-      es: "Archivo de producción en Figma — auditado y reconstruido en vivo, con paquete de gobernanza formal",
-      en: "Production Figma file — audited and rebuilt live, with a formal governance package",
+      es: "Biblioteca publicada en Figma (\"Launch Mobility Design System\") — 5 niveles atómicos con variables por marca",
+      en: 'Published Figma library ("Launch Mobility Design System") — 5 atomic levels with per-brand variables',
     },
     generations: {
-      es: "Una — diagnóstico y reconstrucción sobre el sistema ya existente",
-      en: "One — diagnosis and rebuild of the existing system",
+      es: "Una — diagnóstico, reconstrucción y expansión a una arquitectura de 3 marcas",
+      en: "One — diagnosis, rebuild, and expansion into a 3-brand architecture",
     },
     statusLine: {
-      es: "Reconstruido y verificado en producción; 27 pantallas consolidadas",
-      en: "Rebuilt and verified in production; 27 screens consolidated",
+      es: "Vigente en gobernanza y tokens — v4.2, 27 pantallas de producción verificadas",
+      en: "Active governance and tokens — v4.2, 27 production screens verified",
     },
     constructionNotes: [
       {
@@ -333,14 +333,121 @@ export const DESIGN_SYSTEMS: DesignSystem[] = [
         es: "Antes de tocar nada se corrió una auditoría estructurada en 4 ejes, con cada hallazgo respaldado por un node ID real, un ratio de contraste medido o un hex exacto.",
         en: "Before touching anything, a structured 4-axis audit ran, every finding backed by a real node ID, a measured contrast ratio, or an exact hex value.",
       },
+      {
+        es: 'A partir de ahí reestructuré la librería en Figma como una biblioteca publicada organizada en 5 niveles (Fundamentos → Átomos → Moléculas → Organismos → Patrones), cada uno construido sobre el anterior. Cada component set de Fundamentos y Átomos se publicó con exactamente dos variantes por marca por defecto, de modo que cambiar de marca en una instancia es un solo swap de propiedad, no una reconstrucción manual. Una tercera marca se incorporó después directamente desde pantallas de producción, porque el archivo de biblioteca aún no tenía un slot de variante para ella — una deuda que documenté explícitamente en vez de ocultarla.',
+        en: "From there I restructured the library in Figma as a published library organized into 5 levels (Foundations → Atoms → Molecules → Organisms → Patterns), each built on top of the last. Every Foundations and Atoms component set was published with exactly two brand variants by default, so switching an instance's brand is a single property swap, not a manual rebuild. A third brand was folded in later directly from production screens, since it didn't yet have its own variant slot in the library file — a gap I documented explicitly instead of hiding it.",
+      },
+      {
+        es: 'La biblioteca incluye además un componente de anotación de UX ("Ux Notes") usado para dejar notas de diseño directamente sobre las pantallas — el sistema no solo define visuales, también documenta intención de uso in situ.',
+        en: 'The library also includes a UX annotation component ("Ux Notes") used to leave design-intent notes directly on screens — the system doesn\'t just define visuals, it documents usage intent in place.',
+      },
     ],
     tokens: [
+      {
+        name: "brand-primary (marca principal)",
+        hex: "#23325B",
+        note: { es: "Color primario — nunca se mezcla con las otras marcas", en: "Primary color — never mixed with the other brands" },
+      },
+      {
+        name: "brand-accent (marca principal)",
+        hex: "#387FF7",
+        note: { es: "Acento y botón CTA", en: "Accent and CTA button" },
+      },
+      {
+        name: "brand-primary (marca aliada)",
+        hex: "#00708D",
+        note: { es: "Alianza estratégica — tipografía corporativa propia", en: "Strategic partnership — its own corporate typeface" },
+      },
+      {
+        name: "brand-accent (marca aliada)",
+        hex: "#008CAF",
+        note: { es: "Acento de marca aliada", en: "Partner-brand accent" },
+      },
+      {
+        name: "brand-primary (tercera marca)",
+        hex: "#3F741C",
+        note: { es: "Incorporada en v4.1, extraída de pantallas reales", en: "Folded in at v4.1, pulled from real screens" },
+      },
+      {
+        name: "brand-accent (tercera marca)",
+        hex: "#00A9CE",
+        note: { es: "Acento y botón CTA de la tercera marca", en: "Third brand's accent and CTA button" },
+      },
+      {
+        name: "bg-page",
+        hex: "#FBFBFB",
+        note: { es: "Fondo de página compartido — nunca blanco puro", en: "Shared page background — never pure white" },
+      },
+      { name: "bg-input", hex: "#F4F5F7", note: { es: "Fondo de campos de formulario", en: "Form-field background" } },
+      { name: "bg-surface", hex: "#FFFFFF", note: { es: "Cards y modales", en: "Cards and modals" } },
+      { name: "text-primary", hex: "#0C111E", note: { es: "Texto principal, compartido entre marcas", en: "Primary text, shared across brands" } },
+      { name: "text-secondary", hex: "#717280", note: { es: "Texto de apoyo", en: "Secondary text" } },
+      { name: "border-default", hex: "#DDDDDD", note: { es: "Borde por defecto", en: "Default border" } },
       {
         name: "status/error (semántico)",
         hex: "#B10015",
         note: {
-          es: "Migración de marca completa: bordes, iconografía, asteriscos y banners de alerta",
-          en: "Full brand-wide migration: borders, iconography, asterisks, and alert banners",
+          es: "Corregido en v4.2 y migrado a las 3 marcas: bordes, iconografía, asteriscos y banners de alerta",
+          en: "Corrected in v4.2 and migrated across all 3 brands: borders, iconography, asterisks, and alert banners",
+        },
+      },
+      { name: "status/warning", hex: "#FC9926", note: { es: "Advertencia", en: "Warning" } },
+      { name: "status/success", hex: "#61C365", note: { es: "Confirmación", en: "Success" } },
+      { name: "status/info", hex: "#43ACFF", note: { es: "Informativo", en: "Info" } },
+      {
+        name: "accent/línea-flota-premium",
+        hex: "#900E95",
+        note: { es: "Línea interna de gestión de flota premium", en: "Internal premium fleet-management line" },
+      },
+      {
+        name: "accent/línea-analítica",
+        hex: "#2F5BC0",
+        note: { es: "Línea interna de plataforma de analítica", en: "Internal analytics-platform line" },
+      },
+      {
+        name: "accent/línea-integraciones",
+        hex: "#BCC819",
+        note: { es: "Línea interna de integraciones y conectores", en: "Internal integrations/connectors line" },
+      },
+      {
+        name: "accent/línea-calidad",
+        hex: "#3FC7EF",
+        note: { es: "Línea interna de calidad en tiempo real", en: "Internal real-time-quality line" },
+      },
+      {
+        name: "accent/línea-producto",
+        hex: "#006173",
+        note: { es: "Equipo interno de producto", en: "Internal product team" },
+      },
+      {
+        name: "accent/línea-cx",
+        hex: "#09554E",
+        note: { es: "Equipo interno de experiencia de cliente", en: "Internal customer-experience team" },
+      },
+    ],
+    typography: [
+      {
+        role: { es: "Marca principal", en: "House brand" },
+        family: "'Roboto', sans-serif",
+        sample: {
+          es: "Roboto — 16 estilos con nombre, de h2 a Caption, cada uno con peso, tamaño, interlineado y tracking documentados",
+          en: "Roboto — 16 named styles, from h2 down to Caption, each with weight, size, line-height, and tracking documented",
+        },
+      },
+      {
+        role: { es: "Marca aliada", en: "Partner brand" },
+        family: "'Roboto', sans-serif",
+        sample: {
+          es: "Tipografía corporativa propia (uso restringido) — tratamiento de botón en mayúsculas con tracking de 0.6px",
+          en: "Its own corporate typeface (restricted use) — uppercase button treatment with 0.6px tracking",
+        },
+      },
+      {
+        role: { es: "Tercera marca", en: "Third brand" },
+        family: "'Roboto', sans-serif",
+        sample: {
+          es: "Roboto SemiBold — valores heredados marcados explícitamente como no verificados hasta confirmarse",
+          en: "Roboto SemiBold — inherited values explicitly flagged as unverified until confirmed",
         },
       },
     ],
@@ -348,6 +455,10 @@ export const DESIGN_SYSTEMS: DesignSystem[] = [
       {
         es: "Arquitectura de tokens de 3 niveles: Primitivas alimentando Semánticas, resueltas por marca vía el sistema de Modos de Figma.",
         en: "A 3-tier token architecture: Primitives feeding Semantics, resolved per brand through Figma's Mode system.",
+      },
+      {
+        es: "5 niveles atómicos publicados como component sets independientes: Fundamentos, Átomos, Moléculas, Organismos y Patrones.",
+        en: "5 atomic levels published as independent component sets: Foundations, Atoms, Molecules, Organisms, and Patterns.",
       },
       {
         es: "Trabajo reversible por defecto: la página de producción se duplicó antes de cualquier edición.",
@@ -360,6 +471,30 @@ export const DESIGN_SYSTEMS: DesignSystem[] = [
       {
         es: "Verificar contra la lógica real, no contra la apariencia: expuso contenido completamente inventado en un patrón que parecía solo un desajuste visual.",
         en: "Verify against real logic, not appearance: exposed entirely fabricated content in a pattern that looked like a simple visual mismatch.",
+      },
+      {
+        es: "Regla de gobernanza — aislamiento de marca: los tres colores primarios nunca se mezclan en una misma pieza.",
+        en: "Governance rule — brand isolation: the three primary colors are never mixed in a single piece.",
+      },
+      {
+        es: "Regla de gobernanza — botones siempre pill (100px), salvo una única excepción documentada por decisión de producto.",
+        en: "Governance rule — buttons always pill-shaped (100px), except one documented exception made as a product decision.",
+      },
+      {
+        es: "Regla de gobernanza — espaciado siempre múltiplo de 4 (4·8·12·16·24·32·48px); nunca 5, 7, 11, 15 ni 18px.",
+        en: "Governance rule — spacing always a multiple of 4 (4·8·12·16·24·32·48px); never 5, 7, 11, 15, or 18px.",
+      },
+      {
+        es: "Regla de gobernanza — un único rojo de error para todo estado de error o asterisco requerido, en las tres marcas.",
+        en: "Governance rule — one single error red for every error state or required asterisk, across all three brands.",
+      },
+      {
+        es: "Regla de gobernanza — cada valor inferido por analogía (sin pantalla real que lo confirme) se marca explícitamente como tal, con menor nivel de confianza.",
+        en: "Governance rule — every value inferred by analogy (with no real screen confirming it) is explicitly flagged as such, at a lower confidence tier.",
+      },
+      {
+        es: 'El sistema se transcribió a una guía de producción tokenizada (marca → plataforma/modo/nivel → tokens exactos → reglas absolutas) lo bastante estricta como para que un asistente de IA genere HTML/CSS, React, specs de Figma o piezas de marketing "on-brand" sin adivinar un solo hex.',
+        en: 'The system was transcribed into a tokenized production guide (brand → platform/mode/level → exact tokens → absolute rules) precise enough for an AI assistant to generate on-brand HTML/CSS, React, Figma specs, or marketing pieces without guessing a single hex value.',
       },
     ],
     timeline: [
@@ -377,24 +512,50 @@ export const DESIGN_SYSTEMS: DesignSystem[] = [
         label: { es: "Reconstrucción", en: "Rebuild" },
         title: { es: "Lo que quedó en pie", en: "What shipped" },
         description: {
-          es: "Arquitectura de 3 niveles con cambio de marca automático; sets recuperados; badges corregidos; 27 pantallas verificadas; gobernanza formal documentada.",
-          en: "3-tier architecture with automatic brand switching; sets recovered; badges fixed; 27 screens verified; formal governance documented.",
+          es: "Arquitectura de 5 niveles atómicos con cambio de marca automático; sets recuperados; badges corregidos; 27 pantallas verificadas; gobernanza formal documentada.",
+          en: "5-level atomic architecture with automatic brand switching; sets recovered; badges fixed; 27 screens verified; formal governance documented.",
+        },
+      },
+      {
+        era: "v4.1",
+        label: { es: "Tercera marca", en: "Third brand" },
+        title: { es: "Una marca más, sin slot propio", en: "One more brand, with no variant slot of its own" },
+        description: {
+          es: "Incorporé la tercera marca extrayendo sus tokens directamente de pantallas de producción reales, porque el archivo de biblioteca aún no tenía un slot de variante para ella. Detecté y documenté que conviven dos épocas visuales dentro de esa marca, y definí cuál usar por defecto.",
+          en: "I brought the third brand in by pulling its tokens directly from real production screens, since the library file didn't yet have a variant slot for it. I identified and documented that two visual eras coexist within that brand, and defined which one to default to.",
+        },
+      },
+      {
+        era: "v4.2",
+        label: { es: "Gobernanza de color", en: "Color governance" },
+        title: { es: "Un rojo, en las tres marcas", en: "One red, across all three brands" },
+        description: {
+          es: "Corregí el token semántico de error compartido por decisión directa del stakeholder (fecha documentada: 2026-08-12), y propagué el cambio a todas las marcas y todos los estados relacionados — bordes de error, asteriscos requeridos, badges de \"cancelado\", alertas — en vez de dejarlo aislado en una sola pantalla.",
+          en: "I corrected the shared semantic error token per a direct stakeholder decision (documented date: 2026-08-12), and propagated the change to every brand and every related state — form-field error borders, required asterisks, \"cancelled\" badges, alerts — instead of leaving it isolated to a single screen.",
         },
       },
     ],
     gaps: [
       {
-        es: "Solo un puñado de componentes tenían maestros propios de la segunda marca — brecha de paridad señalada para el roadmap.",
-        en: "Only a handful of components had true masters of the second brand — a parity gap flagged for the roadmap.",
+        es: "Solo un puñado de componentes tenían maestros propios de la marca aliada — brecha de paridad señalada para el roadmap.",
+        en: "Only a handful of components had true masters of the partner brand — a parity gap flagged for the roadmap.",
       },
       {
         es: "La corrupción de los sets no era visible desde el panel de capas — puede repetirse sin auditoría periódica.",
         en: "The sets' corruption wasn't visible from the layers panel — it can recur without periodic auditing.",
       },
+      {
+        es: "En la tercera marca, algunos valores siguen marcados como \"inferidos por patrón\" en vez de verificados desde una pantalla real.",
+        en: "In the third brand, some values are still flagged as \"pattern-inferred\" rather than verified from a real screen.",
+      },
+      {
+        es: "Conviven dos épocas visuales dentro de la tercera marca (tipografía legada y una versión más nueva) — documentado, pero aún sin unificar.",
+        en: "Two visual eras still coexist within the third brand (a legacy typeface and a newer one) — documented, but not yet unified.",
+      },
     ],
     currentStateNote: {
-      es: "El sistema ya no depende de la memoria de quien lo tocó por última vez: arquitectura de tokens verificable, librería arrastrable, y gobernanza formal documentada.",
-      en: "The system no longer depends on the memory of whoever last touched it: a verifiable token architecture, a draggable library, and formal documented governance.",
+      es: "El sistema ya no depende de la memoria de quien lo tocó por última vez: 3 marcas de primer nivel y 6 líneas internas completamente tokenizadas, 5 niveles de jerarquía atómica publicados como component sets independientes, un flujo real de reserva (4 sub-flujos) documentado pantalla por pantalla, reglas de gobernanza explícitas y un changelog versionado con decisiones fechadas — la diferencia entre un moodboard bonito y un sistema que efectivamente se puede ejecutar.",
+      en: "The system no longer depends on the memory of whoever last touched it: 3 top-tier brands and 6 internal lines fully tokenized, 5 levels of atomic hierarchy published as independent component sets, one real reservation flow (4 sub-flows) documented screen by screen, explicit governance rules, and a versioned changelog with dated decisions — the difference between a nice moodboard and a design system you can actually execute.",
     },
   },
 ];

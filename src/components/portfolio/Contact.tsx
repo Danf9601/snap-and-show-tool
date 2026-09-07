@@ -1,30 +1,44 @@
 import { MagneticLink, Reveal, SectionHeader } from "./primitives";
+import { t, useLocale } from "@/lib/i18n";
+
+const WHATSAPP_URL = "https://wa.me/573043911046";
 
 const LINKS = [
-  { label: "Email", value: "hola@danielforero.co", href: "mailto:hola@danielforero.co" },
+  { label: "Email", value: "danf9601@gmail.com", href: "mailto:danf9601@gmail.com" },
+  {
+    label: "Email (Kinetik)",
+    value: "daniel@globalkinetik.com",
+    href: "mailto:daniel@globalkinetik.com",
+  },
+  { label: "WhatsApp", value: "+57 304 391 1046", href: WHATSAPP_URL },
   { label: "Behance", value: "behance.net/danielforero11", href: "https://www.behance.net/danielforero11" },
   { label: "LinkedIn", value: "linkedin.com/in/danielforero", href: "https://www.linkedin.com/in/danielforero" },
   { label: "GitHub", value: "github.com/danf9601", href: "https://github.com/danf9601" },
 ];
 
 export function Contact() {
+  const { locale } = useLocale();
+
   return (
     <section id="contact" className="border-border-subtle border-t px-5 pt-24 pb-10 md:px-10 md:pt-36">
       <div className="mx-auto max-w-[1400px]">
         <SectionHeader
           name="CONTACT"
           index="006"
-          title="¿Tienes un producto que merece estar bien construido?"
+          title={t(locale, "contact.headline")}
         />
 
         <Reveal>
           <div className="flex flex-wrap gap-3">
-            <MagneticLink href="mailto:hola@danielforero.co">Escríbeme</MagneticLink>
+            <MagneticLink href={WHATSAPP_URL}>{t(locale, "contact.cta.whatsapp")}</MagneticLink>
+            <MagneticLink href="mailto:danf9601@gmail.com" variant="ghost">
+              {t(locale, "contact.cta.email")}
+            </MagneticLink>
             <MagneticLink
               href="https://www.behance.net/danielforero11"
               variant="ghost"
             >
-              Ver Behance
+              {t(locale, "contact.cta.behance")}
             </MagneticLink>
           </div>
         </Reveal>
