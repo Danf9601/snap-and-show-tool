@@ -11,6 +11,7 @@ const PROJECT_PATHS = [
   "/work/serenia",
   "/work/launch-mobility",
   "/work/tul",
+  "/work/liberty-latin-america",
   "/work/snappr-ai",
   "/work/mercado-pago",
   "/work/claude-figma",

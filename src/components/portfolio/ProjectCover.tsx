@@ -314,6 +314,56 @@ function Serenia() {
   );
 }
 
+function Liberty() {
+  const nodes = [
+    { x: 80, y: 200 },
+    { x: 150, y: 90 },
+    { x: 230, y: 160 },
+    { x: 300, y: 70 },
+    { x: 340, y: 200 },
+  ];
+  return (
+    <Frame>
+      <Glow x="55%" y="35%" opacity={0.24} />
+      <svg viewBox="0 0 400 250" className="absolute inset-0 size-full" aria-hidden>
+        {/* Señal / cobertura: anillos concéntricos emitiendo desde un nodo central — el
+            equipo de frontend internacional y los stakeholders como nodos conectados. */}
+        {range(4).map((i) => (
+          <circle
+            key={i}
+            cx="150"
+            cy="90"
+            r={22 + i * 26}
+            fill="none"
+            stroke={i === 0 ? ACCENT : SUBTLE}
+            strokeOpacity={i === 0 ? 0.7 : 1}
+          />
+        ))}
+        {nodes.slice(1).map((n, i) => (
+          <line
+            key={`l${i}`}
+            x1="150"
+            y1="90"
+            x2={n.x}
+            y2={n.y}
+            stroke={LINE}
+            strokeDasharray="4 4"
+          />
+        ))}
+        {nodes.map((n, i) => (
+          <circle
+            key={`n${i}`}
+            cx={n.x}
+            cy={n.y}
+            r={i === 0 ? 5 : 3.5}
+            fill={i === 0 ? ACCENT : "var(--gray-400)"}
+          />
+        ))}
+      </svg>
+    </Frame>
+  );
+}
+
 function Photo({ src, alt }: { src: string; alt: string }) {
   return (
     <img
@@ -347,6 +397,8 @@ export function ProjectCover({ cover, title }: { cover: string; title: string })
       return <Commdesk />;
     case "claude-figma":
       return <ClaudeFigma />;
+    case "liberty":
+      return <Liberty />;
     default:
       return <Angelemus />;
   }

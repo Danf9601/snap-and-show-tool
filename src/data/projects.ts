@@ -482,7 +482,7 @@ export const PROJECTS: Project[] = [
     clientLogo: "tul",
     stats: [
       {
-        value: "78%",
+        value: "80%",
         label: { es: "Clientes pagando digitalmente", en: "Customers paying digitally" },
       },
       {
@@ -490,6 +490,13 @@ export const PROJECTS: Project[] = [
         label: {
           es: "Incremento en ventas por el cambio a digital",
           en: "Sales increase from the shift to digital",
+        },
+      },
+      {
+        value: "50%",
+        label: {
+          es: "Reducción en tiempo de creación de frames con el design system",
+          en: "Reduction in frame-creation time with the design system",
         },
       },
       { value: "2 meses", label: { es: "Duración del reto", en: "Length of the challenge" } },
@@ -577,6 +584,131 @@ export const PROJECTS: Project[] = [
       { es: "1–2 días de design system por sprint", en: "1–2 design-system days per sprint" },
       { es: "Refinamiento diario en Webflow", en: "Daily refinement in Webflow" },
       { es: "Demo con desarrollo al cierre", en: "Demo with development at close" },
+    ],
+  },
+  {
+    slug: "liberty-latin-america",
+    title: "Liberty Latin America",
+    year: "2023",
+    role: {
+      es: "Senior UX Designer — agencia The Bridge Social",
+      en: "Senior UX Designer — The Bridge Social agency",
+    },
+    summary: {
+      es: "Como Senior UX Designer contratado a través de la agencia The Bridge Social, trabajé directamente con Liberty Latin America (telecomunicaciones) como cliente final, dentro de un equipo de diseño distribuido que entregaba tanto para la App nativa como para la WebApp, en coordinación constante con un equipo de frontend internacional.",
+      en: "As a Senior UX Designer staffed through The Bridge Social agency, I worked directly with Liberty Latin America (telecom) as the end client, inside a distributed design team delivering for both the native App and the WebApp, in constant coordination with an international frontend team.",
+    },
+    tags: ["Product Design", "UX Research", "Agency"],
+    status: "SHIPPED",
+    cover: "liberty",
+    stats: [
+      {
+        value: "5→3 días",
+        label: {
+          es: "Tiempo de entrega del producto final, tras implementar guías de diseño para desarrollo",
+          en: "Final-product delivery time, after rolling out design guidelines for development",
+        },
+      },
+      {
+        value: "1 día",
+        label: {
+          es: "Tiempo de QA de diseño y desarrollo hasta aprobación o ajustes",
+          en: "Design + development QA turnaround to approval or changes",
+        },
+      },
+    ],
+    features: [
+      {
+        title: { es: "Planeación de sprints", en: "Sprint planning" },
+        description: {
+          es: "Organización de sprints y gestión del equipo según los puntos de diseño disponibles cada semana.",
+          en: "Sprint organization and team management based on the design points available each week.",
+        },
+      },
+      {
+        title: { es: "Revisión con stakeholders", en: "Stakeholder review" },
+        description: {
+          es: "Revisión de feedback con stakeholders, gerencia y clientes finales en cada ciclo.",
+          en: "Reviewing feedback with stakeholders, management, and end customers every cycle.",
+        },
+      },
+      {
+        title: { es: "Diseño desde research existente", en: "Design built on existing research" },
+        description: {
+          es: "Diseño de experiencia alineado a las necesidades del negocio y a la investigación previa del UX researcher del equipo.",
+          en: "Experience design aligned to business needs and the team's UX researcher's prior findings.",
+        },
+      },
+      {
+        title: { es: "MVP para App y WebApp", en: "MVP for App and WebApp" },
+        description: {
+          es: "Diseños de baja y media fidelidad, más el MVP, tanto para la App nativa como para la WebApp.",
+          en: "Low- and medium-fidelity designs, plus the MVP, for both the native App and the WebApp.",
+        },
+      },
+      {
+        title: {
+          es: "Liderazgo de ideación de features",
+          en: "Feature ideation leadership",
+        },
+        description: {
+          es: "Arranque de cada feature nueva con journey maps, storyboards, user flows y wireframes.",
+          en: "Kicking off every new feature with journey maps, storyboards, user flows, and wireframes.",
+        },
+      },
+      {
+        title: { es: "Gestión de diseñadores junior", en: "Junior designer management" },
+        description: {
+          es: "Liderazgo de un equipo de diseñadores UX junior dentro de la agencia.",
+          en: "Leading a team of junior UX designers within the agency.",
+        },
+      },
+      {
+        title: {
+          es: "Presentaciones al equipo frontend internacional",
+          en: "Presentations to the international frontend team",
+        },
+        description: {
+          es: "Facilitación de presentaciones y alineación directa con el equipo de frontend distribuido del cliente.",
+          en: "Facilitating presentations and aligning directly with the client's distributed frontend team.",
+        },
+      },
+      {
+        title: {
+          es: "Alineación con producto e ingeniería",
+          en: "Alignment with product and engineering",
+        },
+        description: {
+          es: "Reuniones con product managers, ingenieros y demás áreas para alinear la estrategia de desarrollo del producto.",
+          en: "Meetings with product managers, engineers, and other teams to align on the product development strategy.",
+        },
+      },
+    ],
+    process: [
+      {
+        es: "Partir de la investigación previa del UX researcher del equipo",
+        en: "Start from the team UX researcher's prior findings",
+      },
+      {
+        es: "Ideación con journey maps, storyboards, user flows y wireframes",
+        en: "Ideation with journey maps, storyboards, user flows, and wireframes",
+      },
+      {
+        es: "Diseño de baja y media fidelidad, más el MVP para App y WebApp",
+        en: "Low- and medium-fidelity design, plus the MVP for App and WebApp",
+      },
+      {
+        es: "Revisión con stakeholders, gerencia y clientes finales",
+        en: "Review with stakeholders, management, and end customers",
+      },
+      {
+        es: "Entrega a desarrollo con guías de diseño (uso de UX, lógica y design system)",
+        en: "Handoff to development with design guidelines (UX usage, logic, and the design system)",
+      },
+    ],
+    tools: [
+      { name: "Figma", note: { es: "Diseño y prototipado", en: "Design and prototyping" } },
+      { name: "FigJam", note: { es: "Journey maps y storyboards", en: "Journey maps and storyboards" } },
     ],
   },
   {
@@ -825,16 +957,47 @@ export const PROJECTS: Project[] = [
   {
     slug: "ontop",
     title: "Ontop — Perks Landing Page",
-    year: "2023",
+    year: "2022",
     role: { es: "UX Designer", en: "UX Designer" },
     summary: {
-      es: "Landing para una plataforma de beneficios corporativos.",
-      en: "Landing page for a corporate benefits platform.",
+      es: "Landing para una plataforma de beneficios corporativos, más el sistema completo de producción de piezas gráficas del área de marketing y marca.",
+      en: "Landing page for a corporate benefits platform, plus the full production system for the marketing and brand team's graphic pieces.",
     },
     tags: ["Landing Page", "Benefits", "UI Design"],
     status: "SHIPPED",
     cover: "ontop",
     clientLogo: "ontop",
+    stats: [
+      {
+        value: "30%",
+        label: {
+          es: "Reducción en tiempo de creación de piezas gráficas",
+          en: "Reduction in time to create graphic pieces",
+        },
+      },
+    ],
+    process: [
+      {
+        es: "CMS avanzado en Webflow y WordPress para landings y contenido automatizado de marketing y marca",
+        en: "Advanced Webflow and WordPress CMS work for landing pages and automated marketing/brand content",
+      },
+      {
+        es: "Traducción de requerimientos a guías de estilo, design system y patrones de UI",
+        en: "Translating requirements into style guides, a design system, and UI patterns",
+      },
+      {
+        es: "Implementación completa del sistema de Perks en Webflow, construyendo y diseñando las landings",
+        en: "Full implementation of the Perks system in Webflow, building and designing the landing pages",
+      },
+      {
+        es: "Reestructuración del sistema de creación de piezas gráficas",
+        en: "Restructuring the graphic-piece production system",
+      },
+      {
+        es: "Modelo de automatización entre Figma, After Effects, Premiere e Illustrator para el contenido gráfico de cada área",
+        en: "An automation model across Figma, After Effects, Premiere, and Illustrator for every area's graphic content",
+      },
+    ],
     features: [
       {
         title: { es: "Beneficios al mejor precio", en: "Benefits at the best price" },
@@ -873,7 +1036,15 @@ export const PROJECTS: Project[] = [
         },
       },
     ],
-    tools: [{ name: "Photoshop" }, { name: "Illustrator" }, { name: "Figma" }],
+    tools: [
+      { name: "Webflow" },
+      { name: "WordPress" },
+      { name: "Figma" },
+      { name: "Photoshop" },
+      { name: "Illustrator" },
+      { name: "After Effects" },
+      { name: "Premiere" },
+    ],
   },
   {
     slug: "commdesk",
