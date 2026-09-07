@@ -956,14 +956,14 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "ontop",
-    title: "Ontop — Perks Landing Page",
+    title: "Ontop — UX Designer",
     year: "2022",
     role: { es: "UX Designer", en: "UX Designer" },
     summary: {
-      es: "Landing para una plataforma de beneficios corporativos, más el sistema completo de producción de piezas gráficas del área de marketing y marca.",
-      en: "Landing page for a corporate benefits platform, plus the full production system for the marketing and brand team's graphic pieces.",
+      es: "UX/UI Designer en Ontop: uso avanzado de Webflow y WordPress para las landing pages y el contenido de marketing de toda la organización (incluida la landing de Perks, su plataforma de beneficios corporativos), traducción de requerimientos de negocio a guías de estilo y design system, y liderazgo del sistema de producción de piezas gráficas del área de marca.",
+      en: "UX/UI Designer at Ontop: advanced Webflow and WordPress work for the whole organization's landing pages and marketing content (including the Perks corporate-benefits landing page), translating business requirements into style guides and a design system, and leading the brand team's graphic-production system.",
     },
-    tags: ["Landing Page", "Benefits", "UI Design"],
+    tags: ["UX/UI Design", "Design System", "Webflow"],
     status: "SHIPPED",
     cover: "ontop",
     clientLogo: "ontop",
@@ -984,6 +984,10 @@ export const PROJECTS: Project[] = [
       {
         es: "Traducción de requerimientos a guías de estilo, design system y patrones de UI",
         en: "Translating requirements into style guides, a design system, and UI patterns",
+      },
+      {
+        es: "Diseño centrado en el usuario a partir de requerimientos de negocio y feedback real",
+        en: "User-centric design built from business requirements and real user feedback",
       },
       {
         es: "Implementación completa del sistema de Perks en Webflow, construyendo y diseñando las landings",

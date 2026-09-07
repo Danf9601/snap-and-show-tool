@@ -24,6 +24,7 @@ export const Route = createFileRoute("/work/$slug")({
     }
     const title = `${loaderData.project.title} — Case study · Daniel Forero`;
     const description = loaderData.project.summary.es.slice(0, 155);
+    const url = `https://daniel.globalkinetik.com/work/${loaderData.project.slug}`;
     return {
       meta: [
         { title },
@@ -31,8 +32,10 @@ export const Route = createFileRoute("/work/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   notFoundComponent: NotFoundCaseStudy,

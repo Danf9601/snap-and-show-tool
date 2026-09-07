@@ -86,8 +86,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Portafolio de Daniel Forero: diseño y construcción de productos digitales, del design system al código en producción.",
       },
       { name: "author", content: "Daniel Forero" },
+      {
+        name: "keywords",
+        content:
+          "Daniel Forero, UX Designer, UI Designer, Front End Developer, Design Systems, Bogotá, portafolio",
+      },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#050507" },
+      { property: "og:site_name", content: "Daniel Forero — Portfolio" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "es_CO" },
+      { property: "og:image", content: "https://daniel.globalkinetik.com/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://daniel.globalkinetik.com/og-image.jpg" },
     ],
     links: [
       {
@@ -101,6 +114,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap",
       },
       { rel: "icon", href: withBase("favicon.ico"), type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: withBase("favicon.ico") },
+      { rel: "sitemap", type: "application/xml", href: withBase("sitemap.xml") },
     ],
   }),
 

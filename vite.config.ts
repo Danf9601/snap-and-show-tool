@@ -24,8 +24,9 @@ const PROJECT_PATHS = [
 ];
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const base = isGitHubPages ? "/snap-and-show-tool/" : "/";
-const routerBasepath = isGitHubPages ? "/snap-and-show-tool" : undefined;
+// Served from a custom domain (daniel.globalkinetik.com) at the root, so the
+// base path is "/" both on GitHub Pages and locally — no repo-name subpath.
+const base = "/";
 
 export default defineConfig({
   // GitHub Pages is static-only. Skip Nitro's Cloudflare worker so TanStack
@@ -35,7 +36,6 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    ...(routerBasepath ? { router: { basepath: routerBasepath } } : {}),
     spa: {
       enabled: true,
     },

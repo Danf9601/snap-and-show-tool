@@ -22,6 +22,7 @@ export const Route = createFileRoute("/design-systems/$slug")({
     }
     const title = `${loaderData.system.name} — Design System · Daniel Forero`;
     const description = loaderData.system.subtitle.es;
+    const url = `https://daniel.globalkinetik.com/design-systems/${loaderData.system.slug}`;
     return {
       meta: [
         { title },
@@ -29,7 +30,10 @@ export const Route = createFileRoute("/design-systems/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   notFoundComponent: NotFoundDesignSystem,
